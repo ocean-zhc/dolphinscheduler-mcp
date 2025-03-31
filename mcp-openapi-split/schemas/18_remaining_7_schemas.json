@@ -1,0 +1,153 @@
+{
+    "components": {
+        "schemas": {
+            "PageInfoErrorCommand": {
+                "type": "object",
+                "properties": {
+                    "totalList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ErrorCommand"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "currentPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageNo": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "Command": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "commandType": {
+                        "type": "string",
+                        "enum": [
+                            "START_PROCESS",
+                            "START_CURRENT_TASK_PROCESS",
+                            "RECOVER_TOLERANCE_FAULT_PROCESS",
+                            "RECOVER_SUSPENDED_PROCESS",
+                            "START_FAILURE_TASK_PROCESS",
+                            "COMPLEMENT_DATA",
+                            "SCHEDULER",
+                            "REPEAT_RUNNING",
+                            "PAUSE",
+                            "STOP",
+                            "RECOVER_WAITING_THREAD",
+                            "RECOVER_SERIAL_WAIT",
+                            "EXECUTE_TASK",
+                            "DYNAMIC_GENERATION"
+                        ]
+                    },
+                    "processDefinitionCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "executorId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "commandParam": {
+                        "type": "string"
+                    },
+                    "taskDependType": {
+                        "type": "string",
+                        "enum": [
+                            "TASK_ONLY",
+                            "TASK_PRE",
+                            "TASK_POST"
+                        ]
+                    },
+                    "failureStrategy": {
+                        "type": "string",
+                        "enum": [
+                            "END",
+                            "CONTINUE"
+                        ]
+                    },
+                    "warningType": {
+                        "type": "string",
+                        "enum": [
+                            "NONE",
+                            "SUCCESS",
+                            "FAILURE",
+                            "ALL",
+                            "GLOBAL"
+                        ]
+                    },
+                    "warningGroupId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "scheduleTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "processInstancePriority": {
+                        "type": "string",
+                        "enum": [
+                            "HIGHEST",
+                            "HIGH",
+                            "MEDIUM",
+                            "LOW",
+                            "LOWEST"
+                        ]
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "workerGroup": {
+                        "type": "string"
+                    },
+                    "tenantCode": {
+                        "type": "string"
+                    },
+                    "environmentCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "dryRun": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "processInstanceId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "processDefinitionVersion": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "testFlag": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            }
+        }
+    }
+}

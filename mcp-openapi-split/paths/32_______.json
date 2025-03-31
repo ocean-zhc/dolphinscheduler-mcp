@@ -1,0 +1,245 @@
+{
+    "paths": {
+        "/queues/{id}": {
+            "put": {
+                "tags": [
+                    "队列相关操作"
+                ],
+                "summary": "updateQueue",
+                "description": "更新队列",
+                "operationId": "updateQueue",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "队列ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "queue",
+                        "in": "query",
+                        "description": "hadoop yarn队列名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "queueName",
+                        "in": "query",
+                        "description": "队列名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultQueue"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "队列相关操作"
+                ],
+                "summary": "deleteQueueById",
+                "description": "DELETE_QUEUE_NOTES",
+                "operationId": "deleteQueueById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "队列ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/queues": {
+            "get": {
+                "tags": [
+                    "队列相关操作"
+                ],
+                "summary": "queryQueueListPaging",
+                "description": "分页查询队列列表",
+                "operationId": "queryQueueListPaging",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoQueue"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "队列相关操作"
+                ],
+                "summary": "createQueue",
+                "description": "创建队列",
+                "operationId": "createQueue",
+                "parameters": [
+                    {
+                        "name": "queue",
+                        "in": "query",
+                        "description": "hadoop yarn队列名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "queueName",
+                        "in": "query",
+                        "description": "队列名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultQueue"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/queues/verify": {
+            "post": {
+                "tags": [
+                    "队列相关操作"
+                ],
+                "summary": "verifyQueue",
+                "description": "验证队列",
+                "operationId": "verifyQueue",
+                "parameters": [
+                    {
+                        "name": "queue",
+                        "in": "query",
+                        "description": "hadoop yarn队列名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "queueName",
+                        "in": "query",
+                        "description": "队列名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/queues/list": {
+            "get": {
+                "tags": [
+                    "队列相关操作"
+                ],
+                "summary": "queryList",
+                "description": "查询队列列表",
+                "operationId": "queryList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListQueue"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

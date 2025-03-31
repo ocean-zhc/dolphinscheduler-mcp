@@ -1,0 +1,584 @@
+{
+    "paths": {
+        "/datasources/{id}": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "queryDataSource",
+                "description": "查询数据源通过ID",
+                "operationId": "queryDataSource",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "updateDataSource",
+                "description": "更新数据源",
+                "operationId": "updateDataSource",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "dataSourceParam",
+                        "description": "数据源参数",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/BaseDataSourceParamDTO"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultDataSource"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "deleteDataSource",
+                "description": "删除数据源",
+                "operationId": "deleteDataSource",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "queryDataSourceListPaging",
+                "description": "分页查询数据源列表",
+                "operationId": "queryDataSourceListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "createDataSource",
+                "description": "创建数据源",
+                "operationId": "createDataSource",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string",
+                                "description": "数据源参数"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultDataSource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/connect": {
+            "post": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "connectDataSource",
+                "description": "连接数据源",
+                "operationId": "connectDataSource",
+                "requestBody": {
+                    "description": "dataSourceParam",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/{id}/connect-test": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "connectionTest",
+                "description": "连接数据源测试",
+                "operationId": "connectionTest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/verify-name": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "verifyDataSourceName",
+                "description": "验证数据源",
+                "operationId": "verifyDataSourceName",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "数据源名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/unauth-datasource": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "unauthorizedDatasource",
+                "description": "未授权的数据源",
+                "operationId": "unAuthDatasource",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/tables": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "tables",
+                "description": "获取数据源表列表",
+                "operationId": "getTables",
+                "parameters": [
+                    {
+                        "name": "datasourceId",
+                        "in": "query",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "database",
+                        "in": "query",
+                        "description": "DATABASE",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/tableColumns": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "tableColumns",
+                "description": "获取数据源表列名",
+                "operationId": "getTableColumns",
+                "parameters": [
+                    {
+                        "name": "datasourceId",
+                        "in": "query",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "tableName",
+                        "in": "query",
+                        "description": "表名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "database",
+                        "in": "query",
+                        "description": "DATABASE",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/list": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "queryDataSourceList",
+                "description": "通过数据源类型查询数据源列表",
+                "operationId": "queryDataSourceList",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "数据源类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "MYSQL",
+                                "POSTGRESQL",
+                                "HIVE",
+                                "SPARK",
+                                "CLICKHOUSE",
+                                "ORACLE",
+                                "SQLSERVER",
+                                "DB2",
+                                "PRESTO",
+                                "H2",
+                                "REDSHIFT",
+                                "ATHENA",
+                                "TRINO",
+                                "STARROCKS",
+                                "AZURESQL",
+                                "DAMENG",
+                                "OCEANBASE",
+                                "SSH",
+                                "KYUUBI",
+                                "DATABEND",
+                                "SNOWFLAKE",
+                                "VERTICA",
+                                "HANA",
+                                "DORIS",
+                                "ZEPPELIN",
+                                "SAGEMAKER"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/kerberos-startup-state": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "getKerberosStartupState",
+                "description": "获取用户信息",
+                "operationId": "getKerberosStartupState",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/databases": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "databases",
+                "description": "GET_DATASOURCE_DATABASE_NOTES",
+                "operationId": "getDatabases",
+                "parameters": [
+                    {
+                        "name": "datasourceId",
+                        "in": "query",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/datasources/authed-datasource": {
+            "get": {
+                "tags": [
+                    "数据源相关操作"
+                ],
+                "summary": "authedDatasource",
+                "description": "授权的数据源",
+                "operationId": "authedDatasource",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

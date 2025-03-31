@@ -1,0 +1,525 @@
+{
+    "paths": {
+        "/task-group/update": {
+            "post": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "update",
+                "description": "更新任务组",
+                "operationId": "updateTaskGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "任务组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "任务组名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "任务组描述",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "groupSize",
+                        "in": "query",
+                        "description": "任务组大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/start-task-group": {
+            "post": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "startTaskGroup",
+                "description": "启动任务组",
+                "operationId": "startTaskGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "任务组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/modifyPriority": {
+            "post": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "modifyPriority",
+                "description": "修改任务组优先级",
+                "operationId": "modifyPriority",
+                "parameters": [
+                    {
+                        "name": "queueId",
+                        "in": "query",
+                        "description": "任务组队列ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "priority",
+                        "in": "query",
+                        "description": "任务队列优先级",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/forceStart": {
+            "post": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "forceStart",
+                "description": "强制启动任务组",
+                "operationId": "forceStart",
+                "parameters": [
+                    {
+                        "name": "queueId",
+                        "in": "query",
+                        "description": "任务组队列ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/create": {
+            "post": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "create",
+                "description": "创建任务组",
+                "operationId": "createTaskGroup",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "NAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "任务组描述",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "groupSize",
+                        "in": "query",
+                        "description": "任务组大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/close-task-group": {
+            "post": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "closeTaskGroup",
+                "description": "关闭任务组",
+                "operationId": "closeTaskGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/query-list-by-status": {
+            "get": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "queryTaskGroupByStatus",
+                "description": "通过状态查询任务组",
+                "operationId": "queryTaskGroupByStatus",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "任务组状态",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/query-list-by-projectCode": {
+            "get": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "queryTaskGroupByName",
+                "description": "通过项目ID查询工作组列表",
+                "operationId": "queryTaskGroupByCode",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/query-list-by-group-id": {
+            "get": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "queryTaskGroupQueuesByGroupId",
+                "description": "QUERY_TASKS_GROUP_GROUP_QUEUES",
+                "operationId": "queryTaskGroupQueues",
+                "parameters": [
+                    {
+                        "name": "groupId",
+                        "in": "query",
+                        "description": "GROUP_ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "taskInstanceName",
+                        "in": "query",
+                        "description": "任务实例名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "processInstanceName",
+                        "in": "query",
+                        "description": "流程实例名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "任务组状态",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/task-group/list-paging": {
+            "get": {
+                "tags": [
+                    "任务组相关操作"
+                ],
+                "summary": "list-paging",
+                "description": "查询所有任务组",
+                "operationId": "queryAllTaskGroup",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "任务组名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

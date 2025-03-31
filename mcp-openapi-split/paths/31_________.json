@@ -1,0 +1,1250 @@
+{
+    "paths": {
+        "/resources": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "queryResourceListPaging",
+                "description": "分页查询资源列表",
+                "operationId": "queryResourceListPaging",
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "RESOURCE_FULLNAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoStorageEntity"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "updateResource",
+                "description": "在线更新资源文件",
+                "operationId": "updateResource",
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "RESOURCE_FULLNAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "资源文件名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "description": "资源文件",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "description": "资源文件",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "createResource",
+                "description": "创建资源",
+                "operationId": "createResource",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "资源文件名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "currentDir",
+                        "in": "query",
+                        "description": "RESOURCE_CURRENT_DIR",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "description": "资源文件",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "description": "资源文件",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "deleteResource",
+                "description": "通过ID删除资源",
+                "operationId": "deleteResource",
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "RESOURCE_FULLNAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/update-content": {
+            "put": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "updateResourceContent",
+                "description": "在线更新资源文件",
+                "operationId": "updateResourceContent",
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "FULL_NAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "资源文件内容",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/udf-func/{id}": {
+            "put": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "updateUdfFunc",
+                "description": "更新udf函数",
+                "operationId": "updateUdfFunc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "udf ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "UDF类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIVE",
+                                "SPARK"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "funcName",
+                        "in": "query",
+                        "description": "函数名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "className",
+                        "in": "query",
+                        "description": "包名类名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "argTypes",
+                        "in": "query",
+                        "description": "参数",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "database",
+                        "in": "query",
+                        "description": "数据库名",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "udf描述，使用说明",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "deleteUdfFunc",
+                "description": "删除UDF函数",
+                "operationId": "deleteUdfFunc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "UDF_FUNC_ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/udf-func": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "queryUdfFuncListPaging",
+                "description": "分页查询udf函数列表",
+                "operationId": "queryUdfFuncListPaging",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "createUdfFunc",
+                "description": "创建UDF函数",
+                "operationId": "createUdfFunc",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "UDF类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIVE",
+                                "SPARK"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "funcName",
+                        "in": "query",
+                        "description": "函数名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "className",
+                        "in": "query",
+                        "description": "包名类名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "argTypes",
+                        "in": "query",
+                        "description": "参数",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "database",
+                        "in": "query",
+                        "description": "数据库名",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "udf描述，使用说明",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "resourceId",
+                        "description": "资源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/online-create": {
+            "post": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "onlineCreateResource",
+                "description": "在线创建资源",
+                "operationId": "createResourceFile",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "fileName",
+                        "in": "query",
+                        "description": "资源文件名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "suffix",
+                        "in": "query",
+                        "description": "资源文件后缀",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "content",
+                        "in": "query",
+                        "description": "资源文件内容",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "currentDir",
+                        "in": "query",
+                        "description": "当前资源目录",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "description": "资源文件描述",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/directory": {
+            "post": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "createDirectory",
+                "description": "创建资源",
+                "operationId": "createDirectory",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "资源文件名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pid",
+                        "in": "query",
+                        "description": "资源父目录ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "currentDir",
+                        "in": "query",
+                        "description": "RESOURCE_CURRENT_DIR",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/{id}/udf-func": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "viewUIUdfFunction",
+                "description": "查看udf函数",
+                "operationId": "viewUIUdfFunction",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "资源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/view": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "viewResource",
+                "description": "通过ID浏览资源",
+                "operationId": "viewResource",
+                "parameters": [
+                    {
+                        "name": "skipLineNum",
+                        "in": "query",
+                        "description": "忽略行数",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "显示多少条",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "资源全名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/verify-name": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "verifyResourceName",
+                "description": "验证资源名称",
+                "operationId": "verifyResourceName",
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "资源全名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/udf-func/verify-name": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "verifyUdfFuncName",
+                "description": "验证udf函数名",
+                "operationId": "verifyUdfFuncName",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "函数名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/udf-func/list": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "queryUdfFuncList",
+                "description": "查询UDF函数列表",
+                "operationId": "queryUdfFuncList",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "UDF类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIVE",
+                                "SPARK"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/query-file-name": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "queryResourceByFileName",
+                "description": "QUERY_BY_RESOURCE_FILE_NAME",
+                "operationId": "queryResourceByFileName",
+                "parameters": [
+                    {
+                        "name": "fileName",
+                        "in": "query",
+                        "description": "RESOURCE_FILE_NAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/query-by-type": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "queryResourceByProgramType",
+                "description": "查询资源列表",
+                "operationId": "queryResourceJarList",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "programType",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "JAVA",
+                                "SCALA",
+                                "PYTHON",
+                                "SQL"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/list": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "queryResourceList",
+                "description": "查询资源列表",
+                "operationId": "queryResourceList",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "RESOURCE_FULLNAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/download": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "downloadResource",
+                "description": "下载资源文件",
+                "operationId": "downloadResource",
+                "parameters": [
+                    {
+                        "name": "fullName",
+                        "in": "query",
+                        "description": "RESOURCE_FULLNAME",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/base-dir": {
+            "get": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "queryResourceBaseDir",
+                "description": "QUERY_RESOURCE_BASE_DIR",
+                "operationId": "queryResourceBaseDir",
+                "parameters": [
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "资源文件类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "FILE",
+                                "UDF",
+                                "ALL"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/resources/data-transfer": {
+            "delete": {
+                "tags": [
+                    "资源中心相关操作"
+                ],
+                "summary": "deleteDataTransferData",
+                "description": "Delete the N days ago data of DATA_TRANSFER ",
+                "operationId": "deleteDataTransferData",
+                "parameters": [
+                    {
+                        "name": "days",
+                        "in": "query",
+                        "description": "N days ago",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/DeleteDataTransferResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

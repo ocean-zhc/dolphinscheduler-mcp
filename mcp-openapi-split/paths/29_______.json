@@ -1,0 +1,256 @@
+{
+    "paths": {
+        "/tenants/{id}": {
+            "put": {
+                "tags": [
+                    "租户相关操作"
+                ],
+                "summary": "updateTenant",
+                "description": "更新租户",
+                "operationId": "updateTenant",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "租户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "queueId",
+                        "in": "query",
+                        "description": "队列ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "租户描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "租户相关操作"
+                ],
+                "summary": "deleteTenantById",
+                "description": "删除租户",
+                "operationId": "deleteTenantById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "租户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tenants": {
+            "get": {
+                "tags": [
+                    "租户相关操作"
+                ],
+                "summary": "queryTenantListPaging",
+                "description": "分页查询租户列表",
+                "operationId": "queryTenantListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoTenant"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "租户相关操作"
+                ],
+                "summary": "createTenant",
+                "description": "创建租户",
+                "operationId": "createTenant",
+                "parameters": [
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "queueId",
+                        "in": "query",
+                        "description": "队列ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "租户描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultTenant"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tenants/verify-code": {
+            "get": {
+                "tags": [
+                    "租户相关操作"
+                ],
+                "summary": "verifyTenantCode",
+                "description": "验证租户",
+                "operationId": "verifyTenantCode",
+                "parameters": [
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/tenants/list": {
+            "get": {
+                "tags": [
+                    "租户相关操作"
+                ],
+                "summary": "queryTenantList",
+                "description": "查询租户列表",
+                "operationId": "queryTenantList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListTenant"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

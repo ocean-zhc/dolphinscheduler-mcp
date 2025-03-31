@@ -1,0 +1,478 @@
+{
+    "paths": {
+        "/projects/{code}": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryProjectByCode",
+                "description": "通过项目ID查询项目信息",
+                "operationId": "queryProjectByCode",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "update",
+                "description": "更新项目",
+                "operationId": "updateProject",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "projectName",
+                        "in": "query",
+                        "description": "项目名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "项目描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "delete",
+                "description": "通过ID删除项目",
+                "operationId": "deleteProject",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryProjectListPaging",
+                "description": "分页查询项目列表",
+                "operationId": "queryProjectListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "create",
+                "description": "创建项目",
+                "operationId": "createProject",
+                "parameters": [
+                    {
+                        "name": "projectName",
+                        "in": "query",
+                        "description": "项目名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "项目描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/unauth-project": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryUnauthorizedProject",
+                "description": "查询未授权的项目",
+                "operationId": "queryUnauthorizedProject",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/project-with-authorized-level": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryProjectWithAuthorizedLevel",
+                "description": "QUERY_PROJECT_AUTHORIZED_LEVEL",
+                "operationId": "queryProjectWithAuthorizedLevel",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/project-with-authorized-level-list-paging": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryProjectWithAuthorizedLevelListPaging",
+                "description": "QUERY_PROJECT_WITH_AUTH_LEVEL_LIST_PAGING_NOTES",
+                "operationId": "queryProjectWithAuthorizedLevelListPaging",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/list": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryAllProjectList",
+                "description": "查询所有项目",
+                "operationId": "queryAllProjectList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/list-dependent": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryAllProjectListForDependent",
+                "description": "查询Dependent节点所有项目",
+                "operationId": "queryAllProjectListForDependent",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/created-and-authed": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryProjectCreatedAndAuthorizedByUser",
+                "description": "查询授权和用户创建的项目",
+                "operationId": "queryProjectCreatedAndAuthorizedByUser",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/authed-user": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryAuthorizedUser",
+                "description": "查询拥有项目授权的用户",
+                "operationId": "queryAuthorizedUser",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/authed-project": {
+            "get": {
+                "tags": [
+                    "项目相关操作"
+                ],
+                "summary": "queryAuthorizedProject",
+                "description": "查询授权项目",
+                "operationId": "queryAuthorizedProject",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

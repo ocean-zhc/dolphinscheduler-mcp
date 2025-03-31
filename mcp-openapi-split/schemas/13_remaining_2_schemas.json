@@ -1,0 +1,77 @@
+{
+    "components": {
+        "schemas": {
+            "StorageEntity": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "fullName": {
+                        "type": "string"
+                    },
+                    "fileName": {
+                        "type": "string"
+                    },
+                    "alias": {
+                        "type": "string"
+                    },
+                    "pfullName": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "FILE",
+                            "UDF",
+                            "ALL"
+                        ]
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "directory": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "DagData": {
+                "type": "object",
+                "properties": {
+                    "processDefinition": {
+                        "$ref": "#/components/schemas/ProcessDefinition"
+                    },
+                    "processTaskRelationList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ProcessTaskRelation"
+                        }
+                    },
+                    "taskDefinitionList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/TaskDefinition"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

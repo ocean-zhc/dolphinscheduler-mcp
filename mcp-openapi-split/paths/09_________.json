@@ -1,0 +1,359 @@
+{
+    "paths": {
+        "/projects/{projectCode}/task-instances/{id}/stop": {
+            "post": {
+                "tags": [
+                    "任务实例相关操作"
+                ],
+                "summary": "stop",
+                "description": "停止任务实例",
+                "operationId": "stopTask",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-instances/{id}/savepoint": {
+            "post": {
+                "tags": [
+                    "任务实例相关操作"
+                ],
+                "summary": "savepoint",
+                "description": "任务SavePoint",
+                "operationId": "taskSavePoint",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-instances/{id}/force-success": {
+            "post": {
+                "tags": [
+                    "任务实例相关操作"
+                ],
+                "summary": "force-success",
+                "description": "强制TASK成功",
+                "operationId": "forceTaskSuccess",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultVoid"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-instances": {
+            "get": {
+                "tags": [
+                    "任务实例相关操作"
+                ],
+                "summary": "queryTaskListPaging",
+                "description": "分页查询任务实例列表",
+                "operationId": "queryTaskListPaging",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processInstanceId",
+                        "in": "query",
+                        "description": "流程实例ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "processInstanceName",
+                        "in": "query",
+                        "description": "流程实例名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionName",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskName",
+                        "in": "query",
+                        "description": "任务实例名",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "query",
+                        "description": "TASK_CODE",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "executorName",
+                        "in": "query",
+                        "description": "流程名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "stateType",
+                        "in": "query",
+                        "description": "工作流和任务节点的运行状态",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "TaskExecutionStatus{code=0, desc='submit success'}",
+                                "TaskExecutionStatus{code=1, desc='running'}",
+                                "TaskExecutionStatus{code=3, desc='pause'}",
+                                "TaskExecutionStatus{code=5, desc='stop'}",
+                                "TaskExecutionStatus{code=6, desc='failure'}",
+                                "TaskExecutionStatus{code=7, desc='success'}",
+                                "TaskExecutionStatus{code=8, desc='need fault tolerance'}",
+                                "TaskExecutionStatus{code=9, desc='kill'}",
+                                "TaskExecutionStatus{code=12, desc='delay execution'}",
+                                "TaskExecutionStatus{code=13, desc='forced success'}",
+                                "TaskExecutionStatus{code=17, desc='dispatch'}"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "host",
+                        "in": "query",
+                        "description": "运行任务的主机IP地址",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskExecuteType",
+                        "in": "query",
+                        "description": "任务执行类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "BATCH",
+                                "STREAM"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-instances/{id}/remove-cache": {
+            "delete": {
+                "tags": [
+                    "任务实例相关操作"
+                ],
+                "summary": "remove-task-instance-cache",
+                "description": "REMOVE_TASK_INSTANCE_CACHE",
+                "operationId": "removeTaskInstanceCache",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/TaskInstanceRemoveCacheResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

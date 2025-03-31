@@ -1,0 +1,1175 @@
+{
+    "components": {
+        "schemas": {
+            "ResultBoolean": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "boolean"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultObject": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Result": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultQueue": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Queue"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultDataSource": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/DataSource"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultAlertPluginInstance": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/AlertPluginInstance"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultAlertGroup": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/AlertGroup"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultAccessToken": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/AccessToken"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultUser": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultTenant": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Tenant"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultVoid": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultEnvironment": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Environment"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultLong": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultCluster": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Cluster"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultString": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "string"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoTenant": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoTenant"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListTenant": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Tenant"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoStorageEntity": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoStorageEntity"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoQueue": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoQueue"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListQueue": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Queue"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultProcessInstance": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ProcessInstance"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListDynamicSubWorkflowDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DynamicSubWorkflowDto"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoProcessDefinition": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoProcessDefinition"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultProcessDefinition": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ProcessDefinition"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultMapStringObject": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "object"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListWorkFlowLineage": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/WorkFlowLineage"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListAuditOperationTypeDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AuditOperationTypeDto"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListAuditModelTypeDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AuditModelTypeDto"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoAuditDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoAuditDto"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultTaskInstanceCountVO": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/TaskInstanceCountVO"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultMapStringInteger": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultWorkflowInstanceCountVO": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/WorkflowInstanceCountVO"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoErrorCommand": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoErrorCommand"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoCommand": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoCommand"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultWorkflowDefinitionCountVO": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/WorkflowDefinitionCountVO"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListCommandStateCount": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/CommandStateCount"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListOAuth2ClientProperties": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/OAuth2ClientProperties"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListServer": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Server"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListDatabaseMetrics": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DatabaseMetrics"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultResponseTaskLog": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ResponseTaskLog"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListDqRule": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DqRule"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoDqRule": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoDqRule"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoDqExecuteResult": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoDqExecuteResult"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListParamsOptions": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ParamsOptions"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListClusterDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ClusterDto"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultClusterDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ClusterDto"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoClusterDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoClusterDto"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoAlertPluginInstanceVO": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoAlertPluginInstanceVO"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListAlertPluginInstanceVO": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AlertPluginInstanceVO"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoAlertGroup": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoAlertGroup"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListAlertGroup": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AlertGroup"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultPageInfoAccessToken": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoAccessToken"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListAccessToken": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AccessToken"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

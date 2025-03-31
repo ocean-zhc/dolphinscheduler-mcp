@@ -1,0 +1,370 @@
+{
+    "paths": {
+        "/alert-plugin-instances/{id}": {
+            "get": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "getAlertPluginInstance",
+                "description": "查询告警插件实例",
+                "operationId": "getAlertPluginInstance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAlertPluginInstance"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "updateAlertPluginInstance",
+                "description": "更新告警插件实例",
+                "operationId": "updateAlertPluginInstanceById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "instanceName",
+                        "in": "query",
+                        "description": "告警插件实例名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "pluginInstanceParams",
+                        "in": "query",
+                        "description": "告警插件实例参数",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "alertPluginInstanceId",
+                        "description": "告警插件实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAlertPluginInstance"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "deleteAlertPluginInstance",
+                "description": "删除告警插件实例",
+                "operationId": "deleteAlertPluginInstance",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "告警插件ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-plugin-instances": {
+            "get": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "queryAlertPluginInstanceListPaging",
+                "description": "分页查询告警实例列表",
+                "operationId": "listPaging_1",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoAlertPluginInstanceVO"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "createAlertPluginInstance",
+                "description": "创建告警插件实例",
+                "operationId": "createAlertPluginInstance",
+                "parameters": [
+                    {
+                        "name": "pluginDefineId",
+                        "in": "query",
+                        "description": "告警插件定义ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "instanceName",
+                        "in": "query",
+                        "description": "告警插件实例名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "instanceType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NORMAL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "pluginInstanceParams",
+                        "in": "query",
+                        "description": "告警插件实例参数",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAlertPluginInstance"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-plugin-instances/test-send": {
+            "post": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "testSendAlertPluginInstance",
+                "description": "TEST_SEND_ALERT_PLUGIN_INSTANCE",
+                "operationId": "testSendAlertPluginInstance",
+                "parameters": [
+                    {
+                        "name": "pluginDefineId",
+                        "in": "query",
+                        "description": "告警插件定义ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pluginInstanceParams",
+                        "in": "query",
+                        "description": "告警插件实例参数",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-plugin-instances/verify-name": {
+            "get": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "verifyAlertInstanceName",
+                "description": "验证告警插件名称",
+                "operationId": "verifyGroupName",
+                "parameters": [
+                    {
+                        "name": "alertInstanceName",
+                        "in": "query",
+                        "description": "告警插件名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-plugin-instances/list": {
+            "get": {
+                "tags": [
+                    "告警插件实例相关操作"
+                ],
+                "summary": "queryAlertPluginInstanceList",
+                "description": "查询所有告警实例列表",
+                "operationId": "getAlertPluginInstance_1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListAlertPluginInstanceVO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

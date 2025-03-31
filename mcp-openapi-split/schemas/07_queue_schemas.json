@@ -1,0 +1,126 @@
+{
+    "components": {
+        "schemas": {
+            "Queue": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "queueName": {
+                        "type": "string"
+                    },
+                    "queue": {
+                        "type": "string"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ResultQueue": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Queue"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PageInfoQueue": {
+                "type": "object",
+                "properties": {
+                    "totalList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Queue"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "currentPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageNo": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ResultPageInfoQueue": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoQueue"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultListQueue": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Queue"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

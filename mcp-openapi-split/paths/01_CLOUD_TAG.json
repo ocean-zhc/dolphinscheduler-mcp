@@ -1,0 +1,88 @@
+{
+    "paths": {
+        "/cloud/azure/datafactory/resourceGroups": {
+            "get": {
+                "tags": [
+                    "CLOUD_TAG"
+                ],
+                "summary": "listResourceGroup",
+                "description": "LIST_RESOURCE_GROUP",
+                "operationId": "listResourceGroup",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cloud/azure/datafactory/pipelines": {
+            "get": {
+                "tags": [
+                    "CLOUD_TAG"
+                ],
+                "summary": "listPipeline",
+                "description": "LIST_PIPELINE",
+                "operationId": "listPipeline",
+                "parameters": [
+                    {
+                        "name": "factoryName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "resourceGroupName",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cloud/azure/datafactory/factories": {
+            "get": {
+                "tags": [
+                    "CLOUD_TAG"
+                ],
+                "summary": "listDataFactory",
+                "description": "LIST_DATA_FACTORY",
+                "operationId": "listDataFactory",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

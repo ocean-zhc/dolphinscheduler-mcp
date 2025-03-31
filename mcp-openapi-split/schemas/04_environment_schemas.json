@@ -1,0 +1,61 @@
+{
+    "components": {
+        "schemas": {
+            "Environment": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "config": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ResultEnvironment": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Environment"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

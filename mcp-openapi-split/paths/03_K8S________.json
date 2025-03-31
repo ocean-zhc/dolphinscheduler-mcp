@@ -1,0 +1,265 @@
+{
+    "paths": {
+        "/k8s-namespace": {
+            "get": {
+                "tags": [
+                    "K8S命名空间相关操作"
+                ],
+                "summary": "queryNamespaceListPaging",
+                "description": "查询命名空间列表页面",
+                "operationId": "queryNamespaceListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "K8S命名空间相关操作"
+                ],
+                "summary": "createK8sNamespace",
+                "description": "创建命名空间",
+                "operationId": "createNamespace",
+                "parameters": [
+                    {
+                        "name": "namespace",
+                        "in": "query",
+                        "description": "命名空间",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "clusterCode",
+                        "in": "query",
+                        "description": "集群代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/k8s-namespace/verify": {
+            "post": {
+                "tags": [
+                    "K8S命名空间相关操作"
+                ],
+                "summary": "verifyNamespaceK8s",
+                "description": "校验命名空间",
+                "operationId": "verifyNamespace",
+                "parameters": [
+                    {
+                        "name": "namespace",
+                        "in": "query",
+                        "description": "命名空间",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "clusterCode",
+                        "in": "query",
+                        "description": "集群代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/k8s-namespace/delete": {
+            "post": {
+                "tags": [
+                    "K8S命名空间相关操作"
+                ],
+                "summary": "delNamespaceById",
+                "description": "通过ID删除命名空间",
+                "operationId": "delNamespaceById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "k8s命名空间ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/k8s-namespace/unauth-namespace": {
+            "get": {
+                "tags": [
+                    "K8S命名空间相关操作"
+                ],
+                "summary": "queryUnauthorizedNamespace",
+                "description": "查询未授权命名空间",
+                "operationId": "queryUnauthorizedNamespace",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/k8s-namespace/available-list": {
+            "get": {
+                "tags": [
+                    "K8S命名空间相关操作"
+                ],
+                "summary": "queryAvailableNamespaceList",
+                "description": "查询可用命名空间列表",
+                "operationId": "queryAvailableNamespaceList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/k8s-namespace/authed-namespace": {
+            "get": {
+                "tags": [
+                    "K8S命名空间相关操作"
+                ],
+                "summary": "queryAuthorizedNamespace",
+                "description": "查询授权命名空间",
+                "operationId": "queryAuthorizedNamespace",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

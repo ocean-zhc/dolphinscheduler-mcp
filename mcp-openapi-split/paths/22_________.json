@@ -1,0 +1,1372 @@
+{
+    "paths": {
+        "/projects/{projectCode}/process-definition/{code}": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "queryProcessDefinitionByCode",
+                "description": "QUERY_PROCESS_DEFINITION_BY_CODE_NOTES",
+                "operationId": "queryProcessDefinitionByCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "update",
+                "description": "更新流程定义",
+                "operationId": "updateProcessDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "流程定义名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "流程定义描述信息",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "globalParams",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "[]"
+                        }
+                    },
+                    {
+                        "name": "locations",
+                        "in": "query",
+                        "description": "流程定义节点坐标位置信息(json格式)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "timeout",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "taskRelationJson",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskDefinitionJson",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "executionType",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PARALLEL",
+                                "SERIAL_WAIT",
+                                "SERIAL_DISCARD",
+                                "SERIAL_PRIORITY"
+                            ],
+                            "default": "PARALLEL"
+                        }
+                    },
+                    {
+                        "name": "releaseState",
+                        "in": "query",
+                        "description": "发布流程定义",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "OFFLINE",
+                                "ONLINE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "otherParamsJson",
+                        "description": "OTHER_PARAMS_JSON",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "deleteByCode",
+                "description": "通过流程定义ID删除流程定义",
+                "operationId": "deleteProcessDefinitionByCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "queryListPaging",
+                "description": "分页查询流程定义列表",
+                "operationId": "queryProcessDefinitionListPaging",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "otherParamsJson",
+                        "in": "query",
+                        "description": "OTHER_PARAMS_JSON",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoProcessDefinition"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "createProcessDefinition",
+                "description": "创建流程定义",
+                "operationId": "createProcessDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "流程定义名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "流程定义描述信息",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "globalParams",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "default": "[]"
+                        }
+                    },
+                    {
+                        "name": "locations",
+                        "in": "query",
+                        "description": "流程定义节点坐标位置信息(json格式)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "timeout",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "taskRelationJson",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskDefinitionJson",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "otherParamsJson",
+                        "in": "query",
+                        "description": "OTHER_PARAMS_JSON",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "executionType",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "PARALLEL",
+                                "SERIAL_WAIT",
+                                "SERIAL_DISCARD",
+                                "SERIAL_PRIORITY"
+                            ],
+                            "default": "PARALLEL"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/{code}/release": {
+            "post": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "release",
+                "description": "发布流程定义",
+                "operationId": "releaseProcessDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "releaseState",
+                        "in": "query",
+                        "description": "PROCESS_DEFINITION_RELEASE",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "OFFLINE",
+                                "ONLINE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "description": "流程定义名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/import": {
+            "post": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "importProcessDefinition",
+                "description": "导入流程定义",
+                "operationId": "importProcessDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "file",
+                        "description": "资源文件",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "binary"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "file"
+                                ],
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "description": "资源文件",
+                                        "format": "binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/batch-move": {
+            "post": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "batchMoveByCodes",
+                "description": "移动工作流定义",
+                "operationId": "moveProcessDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "codes",
+                        "in": "query",
+                        "description": "PROCESS_DEFINITION_CODES",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "targetProjectCode",
+                        "in": "query",
+                        "description": "TARGET_PROJECT_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/batch-export": {
+            "post": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "batchExportByCodes",
+                "description": "通过代码列表批量导出工作量定义",
+                "operationId": "batchExportProcessDefinitionByCodes",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "codes",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/batch-delete": {
+            "post": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "batchDeleteByCodes",
+                "description": "通过流程定义ID集合批量删除流程定义",
+                "operationId": "batchDeleteProcessDefinitionByCodes",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "codes",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/batch-copy": {
+            "post": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "batchCopyByCodes",
+                "description": "复制工作流定义",
+                "operationId": "copyProcessDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "codes",
+                        "in": "query",
+                        "description": "PROCESS_DEFINITION_CODES",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "targetProjectCode",
+                        "in": "query",
+                        "description": "TARGET_PROJECT_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/{code}/view-variables": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "viewVariables",
+                "description": "QUERY_PROCESS_DEFINITION_GLOBAL_VARIABLES_AND_LOCAL_VARIABLES_NOTES",
+                "operationId": "viewVariables_1",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/{code}/view-tree": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "viewTree",
+                "description": "树状图",
+                "operationId": "viewTree_1",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "显示多少条",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/{code}/versions": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "queryVersions",
+                "description": "查询流程历史版本信息",
+                "operationId": "queryProcessDefinitionVersions",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/{code}/versions/{version}": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "switchVersion",
+                "description": "切换流程版本",
+                "operationId": "switchProcessDefinitionVersion",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "版本号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "deleteVersion",
+                "description": "删除流程历史版本",
+                "operationId": "deleteProcessDefinitionVersion",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "版本号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultVoid"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/{code}/tasks": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "getTasksByDefinitionCode",
+                "description": "GET_TASK_LIST_BY_DEFINITION_CODE_NOTES",
+                "operationId": "getNodeListByDefinitionCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/verify-name": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "verify-name",
+                "description": "验证流程定义名字",
+                "operationId": "verifyProcessDefinitionName",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "流程定义名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/simple-list": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "querySimpleList",
+                "description": "QUERY_PROCESS_DEFINITION_SIMPLE_LIST_NOTES",
+                "operationId": "queryProcessDefinitionSimpleList",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/query-task-definition-list": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "getTaskListByProcessDefinitionCode",
+                "description": "通过工作流定义代码查询任务定义",
+                "operationId": "getTaskListByProcessDefinitionCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/query-process-definition-list": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "getProcessListByProjectCode",
+                "description": "通过项目代码查询工作流定义",
+                "operationId": "getProcessListByProjectCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/query-by-name": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "queryProcessDefinitionByName",
+                "description": "通过名称查询流程定义",
+                "operationId": "queryProcessDefinitionByName",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "流程定义名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultProcessDefinition"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/list": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "queryList",
+                "description": "查询流程定义列表",
+                "operationId": "queryProcessDefinitionList",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/batch-query-tasks": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "getTaskListByDefinitionCodes",
+                "description": "GET_TASK_LIST_BY_DEFINITION_CODE_NOTES",
+                "operationId": "getNodeListMapByDefinitionCodes",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "codes",
+                        "in": "query",
+                        "description": "PROCESS_DEFINITION_CODES",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-definition/all": {
+            "get": {
+                "tags": [
+                    "流程定义相关操作"
+                ],
+                "summary": "queryAllByProjectCode",
+                "description": "通过项目代码查询所有工作量定义",
+                "operationId": "queryAllProcessDefinitionByProjectCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

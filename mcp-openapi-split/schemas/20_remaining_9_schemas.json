@@ -1,0 +1,68 @@
+{
+    "components": {
+        "schemas": {
+            "OAuth2ClientProperties": {
+                "type": "object",
+                "properties": {
+                    "authorizationUri": {
+                        "type": "string"
+                    },
+                    "clientId": {
+                        "type": "string"
+                    },
+                    "redirectUri": {
+                        "type": "string"
+                    },
+                    "clientSecret": {
+                        "type": "string"
+                    },
+                    "tokenUri": {
+                        "type": "string"
+                    },
+                    "userInfoUri": {
+                        "type": "string"
+                    },
+                    "callbackUrl": {
+                        "type": "string"
+                    },
+                    "iconUri": {
+                        "type": "string"
+                    },
+                    "provider": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Server": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "host": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "zkDirectory": {
+                        "type": "string"
+                    },
+                    "resInfo": {
+                        "type": "string"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "lastHeartbeatTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        }
+    }
+}

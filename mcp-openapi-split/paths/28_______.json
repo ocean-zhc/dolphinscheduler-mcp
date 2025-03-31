@@ -1,0 +1,68 @@
+{
+    "paths": {
+        "/monitor/{nodeType}": {
+            "get": {
+                "tags": [
+                    "监控相关操作"
+                ],
+                "summary": "listServer",
+                "description": "SERVER_LIST_NOTES",
+                "operationId": "listServer",
+                "parameters": [
+                    {
+                        "name": "nodeType",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "ALL_SERVERS",
+                                "MASTER",
+                                "MASTER_NODE_LOCK",
+                                "MASTER_FAILOVER_LOCK",
+                                "MASTER_TASK_GROUP_COORDINATOR_LOCK",
+                                "WORKER",
+                                "ALERT_SERVER",
+                                "ALERT_LOCK"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListServer"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/monitor/databases": {
+            "get": {
+                "tags": [
+                    "监控相关操作"
+                ],
+                "summary": "queryDatabaseState",
+                "description": "查询数据库状态",
+                "operationId": "queryDatabaseState",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListDatabaseMetrics"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

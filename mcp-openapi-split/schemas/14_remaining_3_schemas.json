@@ -1,0 +1,70 @@
+{
+    "components": {
+        "schemas": {
+            "Property": {
+                "type": "object",
+                "properties": {
+                    "prop": {
+                        "type": "string"
+                    },
+                    "direct": {
+                        "type": "string",
+                        "enum": [
+                            "IN",
+                            "OUT"
+                        ]
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "VARCHAR",
+                            "INTEGER",
+                            "LONG",
+                            "FLOAT",
+                            "DOUBLE",
+                            "DATE",
+                            "TIME",
+                            "TIMESTAMP",
+                            "BOOLEAN",
+                            "LIST",
+                            "FILE"
+                        ]
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                }
+            },
+            "StateDesc": {
+                "type": "object",
+                "properties": {
+                    "time": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "state": {
+                        "type": "string",
+                        "enum": [
+                            "WorkflowExecutionStatus{code=0, desc='submit success'}",
+                            "WorkflowExecutionStatus{code=1, desc='running'}",
+                            "WorkflowExecutionStatus{code=2, desc='ready pause'}",
+                            "WorkflowExecutionStatus{code=3, desc='pause'}",
+                            "WorkflowExecutionStatus{code=4, desc='ready stop'}",
+                            "WorkflowExecutionStatus{code=5, desc='stop'}",
+                            "WorkflowExecutionStatus{code=6, desc='failure'}",
+                            "WorkflowExecutionStatus{code=7, desc='success'}",
+                            "WorkflowExecutionStatus{code=12, desc='delay execution'}",
+                            "WorkflowExecutionStatus{code=14, desc='serial wait'}",
+                            "WorkflowExecutionStatus{code=15, desc='ready block'}",
+                            "WorkflowExecutionStatus{code=16, desc='block'}",
+                            "WorkflowExecutionStatus{code=17, desc='wait to run'}"
+                        ]
+                    },
+                    "desc": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

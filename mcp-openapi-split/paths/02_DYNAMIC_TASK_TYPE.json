@@ -1,0 +1,58 @@
+{
+    "paths": {
+        "/dynamic/{taskCategory}/taskTypes": {
+            "get": {
+                "tags": [
+                    "DYNAMIC_TASK_TYPE"
+                ],
+                "summary": "listDynamicTaskTypes",
+                "description": "LIST_DYNAMIC_TASK_TYPES",
+                "operationId": "listDynamicTaskTypes",
+                "parameters": [
+                    {
+                        "name": "taskCategory",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/dynamic/taskCategories": {
+            "get": {
+                "tags": [
+                    "DYNAMIC_TASK_TYPE"
+                ],
+                "summary": "listTaskCategories",
+                "description": "LIST_TASK_TYPE_CATEGORIES",
+                "operationId": "listDynamicTaskCategories",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

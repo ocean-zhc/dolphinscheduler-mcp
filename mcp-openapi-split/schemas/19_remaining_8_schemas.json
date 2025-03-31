@@ -1,0 +1,69 @@
+{
+    "components": {
+        "schemas": {
+            "PageInfoCommand": {
+                "type": "object",
+                "properties": {
+                    "totalList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Command"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "currentPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageNo": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "CommandStateCount": {
+                "type": "object",
+                "properties": {
+                    "errorCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "normalCount": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "commandState": {
+                        "type": "string",
+                        "enum": [
+                            "START_PROCESS",
+                            "START_CURRENT_TASK_PROCESS",
+                            "RECOVER_TOLERANCE_FAULT_PROCESS",
+                            "RECOVER_SUSPENDED_PROCESS",
+                            "START_FAILURE_TASK_PROCESS",
+                            "COMPLEMENT_DATA",
+                            "SCHEDULER",
+                            "REPEAT_RUNNING",
+                            "PAUSE",
+                            "STOP",
+                            "RECOVER_WAITING_THREAD",
+                            "RECOVER_SERIAL_WAIT",
+                            "EXECUTE_TASK",
+                            "DYNAMIC_GENERATION"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

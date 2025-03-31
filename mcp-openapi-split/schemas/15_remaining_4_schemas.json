@@ -1,0 +1,47 @@
+{
+    "components": {
+        "schemas": {
+            "WorkFlowLineage": {
+                "type": "object",
+                "properties": {
+                    "workFlowCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "workFlowName": {
+                        "type": "string"
+                    },
+                    "workFlowPublishStatus": {
+                        "type": "string"
+                    },
+                    "scheduleStartTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "scheduleEndTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "crontab": {
+                        "type": "string"
+                    },
+                    "schedulePublishStatus": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sourceWorkFlowCode": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AuditOperationTypeDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

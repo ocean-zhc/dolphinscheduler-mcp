@@ -1,0 +1,76 @@
+{
+    "paths": {
+        "/ui-plugins/{id}": {
+            "get": {
+                "tags": [
+                    "UI插件相关操作"
+                ],
+                "summary": "queryUiPluginDetailById",
+                "description": "通过ID查询UI插件详情",
+                "operationId": "queryUiPluginDetailById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "插件ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ui-plugins/query-by-type": {
+            "get": {
+                "tags": [
+                    "UI插件相关操作"
+                ],
+                "summary": "queryUiPluginsByType",
+                "description": "通过类型查询UI插件",
+                "operationId": "queryUiPluginsByType",
+                "parameters": [
+                    {
+                        "name": "pluginType",
+                        "in": "query",
+                        "description": "pluginType",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "ALERT",
+                                "REGISTER",
+                                "TASK"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

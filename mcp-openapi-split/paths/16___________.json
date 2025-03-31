@@ -1,0 +1,158 @@
+{
+    "paths": {
+        "/projects/audit/audit-log-operation-type": {
+            "get": {
+                "tags": [
+                    "审计日志执行相关操作"
+                ],
+                "summary": "queryAuditOperationTypeList",
+                "description": "QUERY_AUDIT_OPERATION_TYPE_LIST",
+                "operationId": "queryAuditOperationTypeList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListAuditOperationTypeDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/audit/audit-log-model-type": {
+            "get": {
+                "tags": [
+                    "审计日志执行相关操作"
+                ],
+                "summary": "queryAuditModelTypeList",
+                "description": "QUERY_AUDIT_MODEL_TYPE_LIST",
+                "operationId": "queryAuditModelTypeList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListAuditModelTypeDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/audit/audit-log-list": {
+            "get": {
+                "tags": [
+                    "审计日志执行相关操作"
+                ],
+                "summary": "queryAuditLogListPaging",
+                "description": "查询审计日志",
+                "operationId": "queryAuditLogListPaging",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "modelTypes",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "operationTypes",
+                        "in": "query",
+                        "description": "OPERATION_TYPES",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "modelName",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "objectTypes",
+                        "description": "MODEL_TYPES",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "objectName",
+                        "description": "MODEL_NAME",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoAuditDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

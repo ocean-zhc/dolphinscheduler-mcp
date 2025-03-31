@@ -1,0 +1,306 @@
+{
+    "paths": {
+        "/projects/analysis/task-state-count": {
+            "get": {
+                "tags": [
+                    "任务状态分析相关操作"
+                ],
+                "summary": "countTaskState",
+                "description": "任务状态统计",
+                "operationId": "getTaskInstanceStateCount",
+                "parameters": [
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultTaskInstanceCountVO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/analysis/queue-count": {
+            "get": {
+                "tags": [
+                    "任务状态分析相关操作"
+                ],
+                "summary": "countQueueState",
+                "description": "统计队列里任务状态",
+                "operationId": "countQueueState",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultMapStringInteger"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/analysis/process-state-count": {
+            "get": {
+                "tags": [
+                    "任务状态分析相关操作"
+                ],
+                "summary": "countProcessInstanceState",
+                "description": "统计流程实例状态",
+                "operationId": "getWorkflowInstanceStateCount",
+                "parameters": [
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultWorkflowInstanceCountVO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/analysis/listErrorCommand": {
+            "get": {
+                "tags": [
+                    "任务状态分析相关操作"
+                ],
+                "summary": "listErrorCommand",
+                "description": "LIST_ERROR_COMMAND_LIST_PAGING_NOTES",
+                "operationId": "listErrorCommand",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "description": "搜索值",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoErrorCommand"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/analysis/listCommand": {
+            "get": {
+                "tags": [
+                    "任务状态分析相关操作"
+                ],
+                "summary": "listPendingCommands",
+                "description": "LIST_PENDING_COMMANDS",
+                "operationId": "listPaging",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "description": "搜索值",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoCommand"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/analysis/define-user-count": {
+            "get": {
+                "tags": [
+                    "任务状态分析相关操作"
+                ],
+                "summary": "countDefinitionByUser",
+                "description": "统计用户创建的流程定义",
+                "operationId": "countDefinitionByUser",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultWorkflowDefinitionCountVO"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/analysis/command-state-count": {
+            "get": {
+                "tags": [
+                    "任务状态分析相关操作"
+                ],
+                "summary": "countCommandState",
+                "description": "统计命令状态",
+                "operationId": "countCommandState",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListCommandStateCount"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,198 @@
+{
+    "components": {
+        "schemas": {
+            "Cluster": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "config": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "operator": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ResultCluster": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Cluster"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ClusterDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "code": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "config": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "processDefinitions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "operator": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ResultListClusterDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ClusterDto"
+                        }
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "ResultClusterDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/ClusterDto"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PageInfoClusterDto": {
+                "type": "object",
+                "properties": {
+                    "totalList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ClusterDto"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "currentPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageNo": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ResultPageInfoClusterDto": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/PageInfoClusterDto"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

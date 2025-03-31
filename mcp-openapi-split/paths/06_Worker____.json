@@ -1,0 +1,203 @@
+{
+    "paths": {
+        "/worker-groups": {
+            "get": {
+                "tags": [
+                    "Worker分组管理"
+                ],
+                "summary": "queryAllWorkerGroupsPaging",
+                "description": "Worker分组管理",
+                "operationId": "queryAllWorkerGroupsPaging",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Worker分组管理"
+                ],
+                "summary": "saveWorkerGroup",
+                "description": "创建Worker分组",
+                "operationId": "saveWorkerGroup",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "Worker Server分组ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Worker分组名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "addrList",
+                        "in": "query",
+                        "description": "worker地址列表",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "WORKER_DESC",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "otherParamsJson",
+                        "in": "query",
+                        "description": "WORKER_PARAMS_JSON",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/worker-groups/worker-address-list": {
+            "get": {
+                "tags": [
+                    "Worker分组管理"
+                ],
+                "summary": "queryWorkerAddressList",
+                "description": "查询worker地址列表",
+                "operationId": "queryWorkerAddressList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/worker-groups/all": {
+            "get": {
+                "tags": [
+                    "Worker分组管理"
+                ],
+                "summary": "queryAllWorkerGroups",
+                "description": "查询worker group分组",
+                "operationId": "queryAllWorkerGroups",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/worker-groups/{id}": {
+            "delete": {
+                "tags": [
+                    "Worker分组管理"
+                ],
+                "summary": "deleteWorkerGroupById",
+                "description": "通过ID删除worker group",
+                "operationId": "deleteWorkerGroupById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Worker Server分组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

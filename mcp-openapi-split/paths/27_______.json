@@ -1,0 +1,932 @@
+{
+    "paths": {
+        "/users/update": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "updateUser",
+                "description": "更新用户",
+                "operationId": "updateUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userPassword",
+                        "in": "query",
+                        "description": "用户密码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "queue",
+                        "in": "query",
+                        "description": "使用的队列",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "邮箱",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "query",
+                        "description": "租户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "手机号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "状态",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "timeZone",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/revoke-project": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "revokeProject",
+                "description": "撤销用户的项目权限",
+                "operationId": "revokeProject",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/revoke-project-by-id": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "revokeProjectById",
+                "description": "撤销用户的项目权限",
+                "operationId": "revokeProjectById",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "projectIds",
+                        "in": "query",
+                        "description": "项目IDS(字符串格式，多个项目以\",\"分割)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/register": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "registerUser",
+                "description": "用户注册",
+                "operationId": "registerUser",
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userPassword",
+                        "in": "query",
+                        "description": "用户密码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "repeatPassword",
+                        "in": "query",
+                        "description": "重复密码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "邮箱",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/grant-udf-func": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "grantUDFFunc",
+                "description": "授权udf函数",
+                "operationId": "grantUDFFunc",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "udfIds",
+                        "in": "query",
+                        "description": "udf函数id列表(字符串格式，多个udf函数ID以\",\"分割)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/grant-project": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "grantProject",
+                "description": "授权项目",
+                "operationId": "grantProject",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "projectIds",
+                        "in": "query",
+                        "description": "项目IDS(字符串格式，多个项目以\",\"分割)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/grant-project-with-read-perm": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "grantProjectWithReadPerm",
+                "description": "GRANT_PROJECT_WITH_READ_PERM_NOTES",
+                "operationId": "grantProjectWithReadPerm",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "projectIds",
+                        "in": "query",
+                        "description": "项目IDS(字符串格式，多个项目以\",\"分割)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/grant-project-by-code": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "grantProjectByCode",
+                "description": "授权项目",
+                "operationId": "grantProjectByCode",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "projectCode",
+                        "in": "query",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/grant-namespace": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "grantNamespace",
+                "description": "GRANT_NAMESPACE_NOTES",
+                "operationId": "grantNamespace",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "namespaceIds",
+                        "in": "query",
+                        "description": "NAMESPACE_IDS",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/grant-datasource": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "grantDataSource",
+                "description": "授权数据源",
+                "operationId": "grantDataSource",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "datasourceIds",
+                        "in": "query",
+                        "description": "数据源ID列表(字符串格式，多个数据源ID以\",\"分割)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/delete": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "delUserById",
+                "description": "删除用户通过ID",
+                "operationId": "delUserById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/create": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "createUser",
+                "description": "创建用户",
+                "operationId": "createUser",
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userPassword",
+                        "in": "query",
+                        "description": "用户密码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantId",
+                        "in": "query",
+                        "description": "租户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "queue",
+                        "in": "query",
+                        "description": "使用的队列",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "邮箱",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "phone",
+                        "in": "query",
+                        "description": "手机号",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "状态",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/batch/activate": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "batchActivateUser",
+                "description": "批量激活用户",
+                "operationId": "batchActivateUser",
+                "parameters": [
+                    {
+                        "name": "userNames",
+                        "description": "多个用户名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "string",
+                                "description": "多个用户名"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/activate": {
+            "post": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "activateUser",
+                "description": "激活用户",
+                "operationId": "activateUser",
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/verify-user-name": {
+            "get": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "verifyUserName",
+                "description": "验证用户名",
+                "operationId": "verifyUserName",
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/unauth-user": {
+            "get": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "unauthorizedUser",
+                "description": "取消授权",
+                "operationId": "unauthorizedUser",
+                "parameters": [
+                    {
+                        "name": "alertgroupId",
+                        "in": "query",
+                        "description": "告警组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/list": {
+            "get": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "listUser",
+                "description": "用户列表",
+                "operationId": "listUser",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/list-paging": {
+            "get": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "queryUserList",
+                "description": "查询用户列表",
+                "operationId": "queryUserList",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/list-all": {
+            "get": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "operationId": "listAll",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/get-user-info": {
+            "get": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "getUserInfo",
+                "description": "获取用户信息",
+                "operationId": "getUserInfo",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/authed-user": {
+            "get": {
+                "tags": [
+                    "用户相关操作"
+                ],
+                "summary": "authorizedUser",
+                "description": "授权用户",
+                "operationId": "authorizedUser",
+                "parameters": [
+                    {
+                        "name": "alertgroupId",
+                        "in": "query",
+                        "description": "告警组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

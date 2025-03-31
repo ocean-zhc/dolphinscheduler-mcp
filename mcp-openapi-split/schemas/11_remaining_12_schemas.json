@@ -1,0 +1,51 @@
+{
+    "components": {
+        "schemas": {
+            "PageInfoDqExecuteResult": {
+                "type": "object",
+                "properties": {
+                    "totalList": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/DqExecuteResult"
+                        }
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "totalPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "currentPage": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "pageNo": {
+                        "type": "integer",
+                        "format": "int32"
+                    }
+                }
+            },
+            "ParamsOptions": {
+                "type": "object",
+                "properties": {
+                    "label": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "object"
+                    },
+                    "disabled": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

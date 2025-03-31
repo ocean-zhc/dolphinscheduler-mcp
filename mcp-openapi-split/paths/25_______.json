@@ -1,0 +1,310 @@
+{
+    "paths": {
+        "/environment/verify-environment": {
+            "post": {
+                "tags": [
+                    "环境相关操作"
+                ],
+                "summary": "verifyEnvironment",
+                "description": "校验环境",
+                "operationId": "verifyEnvironment",
+                "parameters": [
+                    {
+                        "name": "environmentName",
+                        "in": "query",
+                        "description": "环境名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/update": {
+            "post": {
+                "tags": [
+                    "环境相关操作"
+                ],
+                "summary": "updateEnvironment",
+                "description": "UPDATE_ENVIRONMENT_NOTES",
+                "operationId": "updateEnvironment",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "环境名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "config",
+                        "in": "query",
+                        "description": "环境配置",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "环境描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "workerGroups",
+                        "in": "query",
+                        "description": "Worker工作组列表",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultEnvironment"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/delete": {
+            "post": {
+                "tags": [
+                    "环境相关操作"
+                ],
+                "summary": "deleteEnvironmentByCode",
+                "description": "通过环境代码删除环境",
+                "operationId": "deleteEnvironment",
+                "parameters": [
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/create": {
+            "post": {
+                "tags": [
+                    "环境相关操作"
+                ],
+                "summary": "createEnvironment",
+                "description": "创建环境",
+                "operationId": "createEnvironment",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "环境名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "config",
+                        "in": "query",
+                        "description": "环境配置",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "环境描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "workerGroups",
+                        "in": "query",
+                        "description": "Worker工作组列表",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultLong"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/query-environment-list": {
+            "get": {
+                "tags": [
+                    "环境相关操作"
+                ],
+                "summary": "queryAllEnvironmentList",
+                "description": "查询所有环境列表",
+                "operationId": "queryAllEnvironmentList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/query-by-code": {
+            "get": {
+                "tags": [
+                    "环境相关操作"
+                ],
+                "summary": "queryEnvironmentByCode",
+                "description": "通过环境代码查询环境",
+                "operationId": "queryEnvironmentByCode",
+                "parameters": [
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/environment/list-paging": {
+            "get": {
+                "tags": [
+                    "环境相关操作"
+                ],
+                "summary": "queryEnvironmentListPaging",
+                "description": "查询环境列表页面",
+                "operationId": "queryEnvironmentListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

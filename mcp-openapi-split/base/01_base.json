@@ -1,0 +1,14 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Apache DolphinScheduler Api Docs",
+        "description": "Apache DolphinScheduler Api Docs",
+        "version": "3.3.0"
+    },
+    "servers": [
+        {
+            "url": "http://www.sjjc.dolphinscheduler.dsj.com/dolphinscheduler",
+            "description": "Generated server url"
+        }
+    ]
+} 

@@ -1,0 +1,279 @@
+{
+    "paths": {
+        "/access-tokens/{id}": {
+            "put": {
+                "tags": [
+                    "访问token相关操作"
+                ],
+                "summary": "updateToken",
+                "description": "更新指定用户的安全令牌",
+                "operationId": "updateToken",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "安全令牌的ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "expireTime",
+                        "in": "query",
+                        "description": "安全令牌的过期时间",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2021-12-31 00:00:00"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "安全令牌字符串，若未显式指定将会自动生成",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "xxxx"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAccessToken"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "访问token相关操作"
+                ],
+                "summary": "deleteToken",
+                "description": "DELETE_TOKEN_NOTES",
+                "operationId": "delAccessTokenById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/access-tokens": {
+            "get": {
+                "tags": [
+                    "访问token相关操作"
+                ],
+                "summary": "queryAccessTokenList",
+                "description": "分页查询access token列表",
+                "operationId": "queryAccessTokenList",
+                "parameters": [
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": 1
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": 20
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoAccessToken"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "访问token相关操作"
+                ],
+                "summary": "createToken",
+                "description": "为指定用户创建安全令牌",
+                "operationId": "createToken",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "expireTime",
+                        "in": "query",
+                        "description": "安全令牌的过期时间",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2021-12-31 00:00:00"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "安全令牌字符串，若未显式指定将会自动生成",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "xxxx"
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAccessToken"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/access-tokens/generate": {
+            "post": {
+                "tags": [
+                    "访问token相关操作"
+                ],
+                "operationId": "generateToken",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "expireTime",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultString"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/access-tokens/user/{userId}": {
+            "get": {
+                "tags": [
+                    "访问token相关操作"
+                ],
+                "summary": "queryAccessTokenByUser",
+                "description": "查询指定用户的access token",
+                "operationId": "queryAccessTokenByUser",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "用户ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListAccessToken"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

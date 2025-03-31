@@ -1,0 +1,86 @@
+{
+    "components": {
+        "schemas": {
+            "ResultUser": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/User"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "User": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "userPassword": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "phone": {
+                        "type": "string"
+                    },
+                    "userType": {
+                        "type": "string",
+                        "enum": [
+                            "ADMIN_USER",
+                            "GENERAL_USER"
+                        ]
+                    },
+                    "tenantId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "state": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "tenantCode": {
+                        "type": "string"
+                    },
+                    "queueName": {
+                        "type": "string"
+                    },
+                    "alertGroup": {
+                        "type": "string"
+                    },
+                    "queue": {
+                        "type": "string"
+                    },
+                    "timeZone": {
+                        "type": "string"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        }
+    }
+}

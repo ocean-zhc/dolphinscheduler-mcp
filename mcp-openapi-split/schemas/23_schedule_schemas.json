@@ -1,0 +1,108 @@
+{
+    "components": {
+        "schemas": {
+            "Schedule": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "processDefinitionCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "processDefinitionName": {
+                        "type": "string"
+                    },
+                    "projectName": {
+                        "type": "string"
+                    },
+                    "definitionDescription": {
+                        "type": "string"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "timezoneId": {
+                        "type": "string"
+                    },
+                    "crontab": {
+                        "type": "string"
+                    },
+                    "failureStrategy": {
+                        "type": "string",
+                        "enum": [
+                            "END",
+                            "CONTINUE"
+                        ]
+                    },
+                    "warningType": {
+                        "type": "string",
+                        "enum": [
+                            "NONE",
+                            "SUCCESS",
+                            "FAILURE",
+                            "ALL",
+                            "GLOBAL"
+                        ]
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "releaseState": {
+                        "type": "string",
+                        "enum": [
+                            "OFFLINE",
+                            "ONLINE"
+                        ]
+                    },
+                    "warningGroupId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "processInstancePriority": {
+                        "type": "string",
+                        "enum": [
+                            "HIGHEST",
+                            "HIGH",
+                            "MEDIUM",
+                            "LOW",
+                            "LOWEST"
+                        ]
+                    },
+                    "workerGroup": {
+                        "type": "string"
+                    },
+                    "tenantCode": {
+                        "type": "string"
+                    },
+                    "environmentCode": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "environmentName": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

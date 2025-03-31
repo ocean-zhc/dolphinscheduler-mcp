@@ -1,0 +1,88 @@
+{
+    "paths": {
+        "/favourite/{taskType}": {
+            "post": {
+                "tags": [
+                    "偏好相关操作"
+                ],
+                "summary": "addTaskType",
+                "description": "添加任务类型",
+                "operationId": "addFavTask",
+                "parameters": [
+                    {
+                        "name": "taskType",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "偏好相关操作"
+                ],
+                "summary": "deleteTaskType",
+                "description": "删除任务类型",
+                "operationId": "deleteFavTask",
+                "parameters": [
+                    {
+                        "name": "taskType",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/favourite/taskTypes": {
+            "get": {
+                "tags": [
+                    "偏好相关操作"
+                ],
+                "summary": "listTaskType",
+                "description": "查询任务类型列表",
+                "operationId": "listTaskType",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+{
+    "components": {
+        "schemas": {
+            "DatabaseMetrics": {
+                "type": "object",
+                "properties": {
+                    "dbType": {
+                        "type": "string",
+                        "enum": [
+                            "MYSQL",
+                            "MARIADB",
+                            "ORACLE",
+                            "ORACLE_12C",
+                            "DB2",
+                            "H2",
+                            "HSQL",
+                            "SQLITE",
+                            "POSTGRE_SQL",
+                            "SQL_SERVER2005",
+                            "SQL_SERVER",
+                            "DM",
+                            "XU_GU",
+                            "KINGBASE_ES",
+                            "PHOENIX",
+                            "GAUSS",
+                            "CLICK_HOUSE",
+                            "GBASE",
+                            "GBASE_8S",
+                            "GBASEDBT",
+                            "GBASE_INFORMIX",
+                            "OSCAR",
+                            "SYBASE",
+                            "OCEAN_BASE",
+                            "FIREBIRD",
+                            "HIGH_GO",
+                            "CUBRID",
+                            "GOLDILOCKS",
+                            "CSIIDB",
+                            "SAP_HANA",
+                            "IMPALA",
+                            "VERTICA",
+                            "XCloud",
+                            "OTHER"
+                        ]
+                    },
+                    "state": {
+                        "type": "string",
+                        "enum": [
+                            "YES",
+                            "NO"
+                        ]
+                    },
+                    "maxConnections": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "maxUsedConnections": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "threadsConnections": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "threadsRunningConnections": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "date": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "DqRule": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "ruleJson": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            }
+        }
+    }
+}

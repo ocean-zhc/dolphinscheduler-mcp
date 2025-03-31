@@ -1,0 +1,376 @@
+{
+    "paths": {
+        "/projects/{projectCode}/process-task-relation": {
+            "post": {
+                "tags": [
+                    "工作流关系相关操作"
+                ],
+                "summary": "save",
+                "description": "创建工作流任务关系",
+                "operationId": "createProcessTaskRelation",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "preTaskCode",
+                        "in": "query",
+                        "description": "PRE_TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "postTaskCode",
+                        "in": "query",
+                        "description": "POST_TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-task-relation/{taskCode}/upstream": {
+            "get": {
+                "tags": [
+                    "工作流关系相关操作"
+                ],
+                "summary": "queryUpstreamRelation",
+                "description": "查询上游工作流任务关系",
+                "operationId": "queryUpstreamRelation",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "path",
+                        "description": "TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "工作流关系相关操作"
+                ],
+                "summary": "deleteUpstreamRelation",
+                "description": "删除上游工作流任务关系",
+                "operationId": "deleteUpstreamRelation",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "preTaskCodes",
+                        "in": "query",
+                        "description": "PRE_TASK_CODES",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "path",
+                        "description": "TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-task-relation/{taskCode}/downstream": {
+            "get": {
+                "tags": [
+                    "工作流关系相关操作"
+                ],
+                "summary": "queryDownstreamRelation",
+                "description": "查询下游工作流任务关系",
+                "operationId": "queryDownstreamRelation",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "path",
+                        "description": "TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "工作流关系相关操作"
+                ],
+                "summary": "deleteDownstreamRelation",
+                "description": "删除下游工作流任务关系",
+                "operationId": "deleteDownstreamRelation",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "postTaskCodes",
+                        "in": "query",
+                        "description": "POST_TASK_CODES",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "path",
+                        "description": "TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-task-relation/{taskCode}": {
+            "delete": {
+                "tags": [
+                    "工作流关系相关操作"
+                ],
+                "summary": "deleteRelation",
+                "description": "删除工作流任务关系",
+                "operationId": "deleteTaskProcessRelation",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "path",
+                        "description": "TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-task-relation/{processDefinitionCode}/{preTaskCode}/{postTaskCode}": {
+            "delete": {
+                "tags": [
+                    "工作流关系相关操作"
+                ],
+                "summary": "deleteEdge",
+                "description": "删除工作流任务连接线",
+                "operationId": "deleteEdge",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "path",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "preTaskCode",
+                        "in": "path",
+                        "description": "PRE_TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "postTaskCode",
+                        "in": "path",
+                        "description": "POST_TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

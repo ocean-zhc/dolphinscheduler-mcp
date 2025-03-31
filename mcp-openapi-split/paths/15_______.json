@@ -1,0 +1,697 @@
+{
+    "paths": {
+        "/projects/{projectCode}/schedules/{id}": {
+            "put": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "updateSchedule",
+                "description": "更新定时",
+                "operationId": "updateSchedule",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "定时ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "schedule",
+                        "in": "query",
+                        "description": "定时",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "in": "query",
+                        "description": "发送策略",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningGroupId",
+                        "in": "query",
+                        "description": "发送组ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "failureStrategy",
+                        "in": "query",
+                        "description": "失败策略",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "END",
+                                "CONTINUE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "workerGroup",
+                        "in": "query",
+                        "description": "worker群组",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processInstancePriority",
+                        "in": "query",
+                        "description": "流程实例优先级",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHEST",
+                                "HIGH",
+                                "MEDIUM",
+                                "LOW",
+                                "LOWEST"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "deleteScheduleById",
+                "description": "根据定时id删除定时数据",
+                "operationId": "deleteScheduleById",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "定时ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/schedules/update/{code}": {
+            "put": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "updateScheduleByProcessDefinitionCode",
+                "description": "UPDATE_SCHEDULE_BY_PROCESS_DEFINITION_CODE_NOTES",
+                "operationId": "updateScheduleByProcessDefinitionCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "schedule",
+                        "in": "query",
+                        "description": "定时",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "in": "query",
+                        "description": "发送策略",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningGroupId",
+                        "in": "query",
+                        "description": "发送组ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "failureStrategy",
+                        "in": "query",
+                        "description": "失败策略",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "END",
+                                "CONTINUE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "workerGroup",
+                        "in": "query",
+                        "description": "worker群组",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processInstancePriority",
+                        "in": "query",
+                        "description": "流程实例优先级",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHEST",
+                                "HIGH",
+                                "MEDIUM",
+                                "LOW",
+                                "LOWEST"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/schedules": {
+            "get": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "queryScheduleListPaging",
+                "description": "分页查询定时",
+                "operationId": "queryScheduleListPaging",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionId",
+                        "description": "流程定义ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "createSchedule",
+                "description": "创建定时",
+                "operationId": "createSchedule",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "schedule",
+                        "in": "query",
+                        "description": "定时",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "in": "query",
+                        "description": "发送策略",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningGroupId",
+                        "in": "query",
+                        "description": "发送组ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "failureStrategy",
+                        "in": "query",
+                        "description": "失败策略",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "END",
+                                "CONTINUE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "workerGroup",
+                        "in": "query",
+                        "description": "worker群组",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processInstancePriority",
+                        "in": "query",
+                        "description": "流程实例优先级",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHEST",
+                                "HIGH",
+                                "MEDIUM",
+                                "LOW",
+                                "LOWEST"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/schedules/{id}/online": {
+            "post": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "online",
+                "description": "定时上线",
+                "operationId": "publishScheduleOnline",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "定时ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/schedules/{id}/offline": {
+            "post": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "offline",
+                "description": "定时下线",
+                "operationId": "offlineSchedule",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "定时ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/schedules/preview": {
+            "post": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "previewSchedule",
+                "description": "定时调度预览",
+                "operationId": "previewSchedule",
+                "parameters": [
+                    {
+                        "name": "schedule",
+                        "in": "query",
+                        "description": "定时",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/schedules/list": {
+            "post": {
+                "tags": [
+                    "定时相关操作"
+                ],
+                "summary": "queryScheduleList",
+                "description": "查询定时列表",
+                "operationId": "queryScheduleList",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

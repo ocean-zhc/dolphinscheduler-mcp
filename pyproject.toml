@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dolphinscheduler-mcp"
+version = "0.1.0"
+description = "A Model Context Protocol (MCP) server for DolphinScheduler"
+readme = "README.md"
+authors = [
+    {name = "DolphinScheduler Contributors"}
+]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi",
+    "python-dotenv",
+    "pydantic",
+    "fastmcp",
+    "aiohttp",
+    "uvicorn",
+]
+
+[project.scripts]
+ds-mcp = "dolphinscheduler_mcp.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "isort",
+    "mypy",
+    "pre-commit",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true 

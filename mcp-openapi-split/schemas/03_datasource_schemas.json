@@ -1,0 +1,163 @@
+{
+    "components": {
+        "schemas": {
+            "BaseDataSourceParamDTO": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "note": {
+                        "type": "string"
+                    },
+                    "host": {
+                        "type": "string"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "database": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "other": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "hostAndPortByAddress": {
+                        "type": "string",
+                        "writeOnly": true
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "MYSQL",
+                            "POSTGRESQL",
+                            "HIVE",
+                            "SPARK",
+                            "CLICKHOUSE",
+                            "ORACLE",
+                            "SQLSERVER",
+                            "DB2",
+                            "PRESTO",
+                            "H2",
+                            "REDSHIFT",
+                            "ATHENA",
+                            "TRINO",
+                            "STARROCKS",
+                            "AZURESQL",
+                            "DAMENG",
+                            "OCEANBASE",
+                            "SSH",
+                            "KYUUBI",
+                            "DATABEND",
+                            "SNOWFLAKE",
+                            "VERTICA",
+                            "HANA",
+                            "DORIS",
+                            "ZEPPELIN",
+                            "SAGEMAKER"
+                        ]
+                    }
+                }
+            },
+            "DataSource": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "note": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "enum": [
+                            "MYSQL",
+                            "POSTGRESQL",
+                            "HIVE",
+                            "SPARK",
+                            "CLICKHOUSE",
+                            "ORACLE",
+                            "SQLSERVER",
+                            "DB2",
+                            "PRESTO",
+                            "H2",
+                            "REDSHIFT",
+                            "ATHENA",
+                            "TRINO",
+                            "STARROCKS",
+                            "AZURESQL",
+                            "DAMENG",
+                            "OCEANBASE",
+                            "SSH",
+                            "KYUUBI",
+                            "DATABEND",
+                            "SNOWFLAKE",
+                            "VERTICA",
+                            "HANA",
+                            "DORIS",
+                            "ZEPPELIN",
+                            "SAGEMAKER"
+                        ]
+                    },
+                    "connectionParams": {
+                        "type": "string"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updateTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "ResultDataSource": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/DataSource"
+                    },
+                    "failed": {
+                        "type": "boolean"
+                    },
+                    "success": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,1008 @@
+{
+    "paths": {
+        "/projects/{projectCode}/executors/task-instance/{code}/start": {
+            "post": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "startTaskInstance",
+                "description": "运行任务实例",
+                "operationId": "startStreamTaskInstance",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "query",
+                        "description": "版本号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "warningGroupId",
+                        "in": "query",
+                        "description": "发送组ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "workerGroup",
+                        "in": "query",
+                        "description": "worker群组",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "startParams",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "dryRun",
+                        "in": "query",
+                        "description": "是否空跑",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "failureStrategy",
+                        "description": "失败策略",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "END",
+                                "CONTINUE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "execType",
+                        "description": "指令类型",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "START_PROCESS",
+                                "START_CURRENT_TASK_PROCESS",
+                                "RECOVER_TOLERANCE_FAULT_PROCESS",
+                                "RECOVER_SUSPENDED_PROCESS",
+                                "START_FAILURE_TASK_PROCESS",
+                                "COMPLEMENT_DATA",
+                                "SCHEDULER",
+                                "REPEAT_RUNNING",
+                                "PAUSE",
+                                "STOP",
+                                "RECOVER_WAITING_THREAD",
+                                "RECOVER_SERIAL_WAIT",
+                                "EXECUTE_TASK",
+                                "DYNAMIC_GENERATION"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "description": "发送策略",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "timeout",
+                        "description": "超时时间",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/executors/start-process-instance": {
+            "post": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "startProcessInstance",
+                "description": "运行流程实例",
+                "operationId": "startProcessInstance",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 100
+                    },
+                    {
+                        "name": "scheduleTime",
+                        "in": "query",
+                        "description": "定时时间,空字符串表示当前天",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "2022-04-06 00:00:00,2022-04-06 00:00:00"
+                    },
+                    {
+                        "name": "failureStrategy",
+                        "in": "query",
+                        "description": "失败策略",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "END",
+                                "CONTINUE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "startNodeList",
+                        "in": "query",
+                        "description": "开始节点列表(节点name)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskDependType",
+                        "in": "query",
+                        "description": "任务依赖类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "TASK_ONLY",
+                                "TASK_PRE",
+                                "TASK_POST"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "execType",
+                        "in": "query",
+                        "description": "指令类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "START_PROCESS",
+                                "START_CURRENT_TASK_PROCESS",
+                                "RECOVER_TOLERANCE_FAULT_PROCESS",
+                                "RECOVER_SUSPENDED_PROCESS",
+                                "START_FAILURE_TASK_PROCESS",
+                                "COMPLEMENT_DATA",
+                                "SCHEDULER",
+                                "REPEAT_RUNNING",
+                                "PAUSE",
+                                "STOP",
+                                "RECOVER_WAITING_THREAD",
+                                "RECOVER_SERIAL_WAIT",
+                                "EXECUTE_TASK",
+                                "DYNAMIC_GENERATION"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "in": "query",
+                        "description": "发送策略",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningGroupId",
+                        "in": "query",
+                        "description": "发送组ID",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "runMode",
+                        "in": "query",
+                        "description": "运行模式",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "RUN_MODE_SERIAL",
+                                "RUN_MODE_PARALLEL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "processInstancePriority",
+                        "in": "query",
+                        "description": "流程实例优先级",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHEST",
+                                "HIGH",
+                                "MEDIUM",
+                                "LOW",
+                                "LOWEST"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "workerGroup",
+                        "in": "query",
+                        "description": "worker群组",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "timeout",
+                        "in": "query",
+                        "description": "超时时间",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "startParams",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expectedParallelismNumber",
+                        "in": "query",
+                        "description": "补数任务自定义并行度",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "dryRun",
+                        "in": "query",
+                        "description": "是否空跑",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "testFlag",
+                        "in": "query",
+                        "description": "测试标识",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "complementDependentMode",
+                        "in": "query",
+                        "description": "补数依赖的类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "OFF_MODE",
+                                "ALL_DEPENDENT"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "allLevelDependent",
+                        "in": "query",
+                        "description": "ALL_LEVEL_DEPENDENT",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "executionOrder",
+                        "in": "query",
+                        "description": "EXECUTION_ORDER",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "DESC_ORDER",
+                                "ASC_ORDER"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/executors/start-check": {
+            "post": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "startCheckProcessDefinition",
+                "description": "检查流程定义",
+                "operationId": "startCheckProcessDefinition",
+                "parameters": [
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/executors/execute": {
+            "post": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "execute",
+                "description": "执行流程实例的各种操作(暂停、停止、重跑、恢复等)",
+                "operationId": "execute",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processInstanceId",
+                        "in": "query",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "executeType",
+                        "in": "query",
+                        "description": "执行类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "REPEAT_RUNNING",
+                                "RECOVER_SUSPENDED_PROCESS",
+                                "START_FAILURE_TASK_PROCESS",
+                                "STOP",
+                                "PAUSE",
+                                "EXECUTE_TASK"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/executors/execute-task": {
+            "post": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "execute-task",
+                "description": "执行流程实例的各种操作(暂停、停止、重跑、恢复等)",
+                "operationId": "executeTask",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processInstanceId",
+                        "in": "query",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "startNodeList",
+                        "in": "query",
+                        "description": "开始节点列表(节点name)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskDependType",
+                        "in": "query",
+                        "description": "任务依赖类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "TASK_ONLY",
+                                "TASK_PRE",
+                                "TASK_POST"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/executors/batch-start-process-instance": {
+            "post": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "batchStartProcessInstance",
+                "description": "批量运行流程实例(其中有任意一个processDefinitionCode找不到,则返回失败信息并且状态置为失败,成功的任务会正常运行,不会停止)",
+                "operationId": "batchStartProcessInstance",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCodes",
+                        "in": "query",
+                        "description": "流程定义编码列表",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "scheduleTime",
+                        "in": "query",
+                        "description": "定时时间,空字符串表示当前天",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "failureStrategy",
+                        "in": "query",
+                        "description": "失败策略",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "END",
+                                "CONTINUE"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "startNodeList",
+                        "in": "query",
+                        "description": "开始节点列表(节点name)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskDependType",
+                        "in": "query",
+                        "description": "任务依赖类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "TASK_ONLY",
+                                "TASK_PRE",
+                                "TASK_POST"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "execType",
+                        "in": "query",
+                        "description": "指令类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "START_PROCESS",
+                                "START_CURRENT_TASK_PROCESS",
+                                "RECOVER_TOLERANCE_FAULT_PROCESS",
+                                "RECOVER_SUSPENDED_PROCESS",
+                                "START_FAILURE_TASK_PROCESS",
+                                "COMPLEMENT_DATA",
+                                "SCHEDULER",
+                                "REPEAT_RUNNING",
+                                "PAUSE",
+                                "STOP",
+                                "RECOVER_WAITING_THREAD",
+                                "RECOVER_SERIAL_WAIT",
+                                "EXECUTE_TASK",
+                                "DYNAMIC_GENERATION"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningType",
+                        "in": "query",
+                        "description": "发送策略",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "SUCCESS",
+                                "FAILURE",
+                                "ALL",
+                                "GLOBAL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "warningGroupId",
+                        "in": "query",
+                        "description": "发送组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "runMode",
+                        "in": "query",
+                        "description": "运行模式",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "RUN_MODE_SERIAL",
+                                "RUN_MODE_PARALLEL"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "processInstancePriority",
+                        "in": "query",
+                        "description": "流程实例优先级",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "HIGHEST",
+                                "HIGH",
+                                "MEDIUM",
+                                "LOW",
+                                "LOWEST"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "workerGroup",
+                        "in": "query",
+                        "description": "worker群组",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "tenantCode",
+                        "in": "query",
+                        "description": "操作系统租户",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "environmentCode",
+                        "in": "query",
+                        "description": "环境代码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "timeout",
+                        "in": "query",
+                        "description": "超时时间",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "startParams",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "expectedParallelismNumber",
+                        "in": "query",
+                        "description": "补数任务自定义并行度",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "dryRun",
+                        "in": "query",
+                        "description": "是否空跑",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "testFlag",
+                        "in": "query",
+                        "description": "测试标识",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "complementDependentMode",
+                        "in": "query",
+                        "description": "补数依赖的类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "OFF_MODE",
+                                "ALL_DEPENDENT"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "allLevelDependent",
+                        "in": "query",
+                        "description": "ALL_LEVEL_DEPENDENT",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "executionOrder",
+                        "in": "query",
+                        "description": "EXECUTION_ORDER",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "DESC_ORDER",
+                                "ASC_ORDER"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/executors/batch-execute": {
+            "post": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "batchExecute",
+                "description": "批量修改工作流实例状态(当实例id找不到时会报对应id的错误，当部分实例更改状态不符合预期会说明这部分的具体原因)",
+                "operationId": "batchExecute",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "processInstanceIds",
+                        "in": "query",
+                        "description": "流程实例ID集合，如果有多个流程实例则用 \",\" 分隔",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "executeType",
+                        "in": "query",
+                        "description": "执行类型",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "NONE",
+                                "REPEAT_RUNNING",
+                                "RECOVER_SUSPENDED_PROCESS",
+                                "START_FAILURE_TASK_PROCESS",
+                                "STOP",
+                                "PAUSE",
+                                "EXECUTE_TASK"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/executors/query-executing-workflow": {
+            "get": {
+                "tags": [
+                    "流程相关操作"
+                ],
+                "summary": "queryExecutingWorkflow",
+                "description": "查询工作流执行数据",
+                "operationId": "queryExecutingWorkflow",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "processInstanceId",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "paths": {
+        "/projects/{projectCode}/worker-group": {
+            "get": {
+                "tags": [
+                    "PROJECT_WORKER_GROUP_TAG"
+                ],
+                "summary": "queryWorkerGroups",
+                "description": "QUERY_WORKER_GROUP_LIST",
+                "operationId": "queryWorkerGroups",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "object",
+                                    "additionalProperties": {
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "PROJECT_WORKER_GROUP_TAG"
+                ],
+                "summary": "assignWorkerGroups",
+                "description": "ASSIGN_WORKER_GROUPS_NOTES",
+                "operationId": "assignWorkerGroups",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "workerGroups",
+                        "description": "Worker工作组列表",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

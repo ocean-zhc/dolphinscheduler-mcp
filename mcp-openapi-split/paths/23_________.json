@@ -1,0 +1,748 @@
+{
+    "paths": {
+        "/projects/{projectCode}/process-instances/{id}": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "queryProcessInstanceById",
+                "description": "通过流程实例ID查询流程实例",
+                "operationId": "queryProcessInstanceById",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "updateProcessInstance",
+                "description": "更新流程实例",
+                "operationId": "updateProcessInstance",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskRelationJson",
+                        "in": "query",
+                        "description": "TASK_RELATION_JSON",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskDefinitionJson",
+                        "in": "query",
+                        "description": "任务定义JSON",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "scheduleTime",
+                        "in": "query",
+                        "description": "定时时间,空字符串表示当前天",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "syncDefine",
+                        "in": "query",
+                        "description": "更新流程实例的信息是否同步到流程定义",
+                        "required": true,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "globalParams",
+                        "in": "query",
+                        "description": "PROCESS_GLOBAL_PARAMS",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "locations",
+                        "in": "query",
+                        "description": "流程实例节点坐标位置信息(json格式)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "timeout",
+                        "in": "query",
+                        "description": "PROCESS_TIMEOUT",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "deleteProcessInstanceById",
+                "description": "通过流程实例ID删除流程实例",
+                "operationId": "deleteProcessInstanceById",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultVoid"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/batch-delete": {
+            "post": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "batchDeleteProcessInstanceByIds",
+                "description": "通过流程实例ID集合批量删除流程实例",
+                "operationId": "batchDeleteProcessInstanceByIds",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "processInstanceIds",
+                        "in": "query",
+                        "description": "流程实例ID集合，如果有多个流程实例则用 \",\" 分隔",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "queryProcessInstanceListPaging",
+                "description": "查询流程实例列表",
+                "operationId": "queryProcessInstanceList",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefineCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "executorName",
+                        "in": "query",
+                        "description": "流程名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "stateType",
+                        "in": "query",
+                        "description": "工作流和任务节点的运行状态",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "WorkflowExecutionStatus{code=0, desc='submit success'}",
+                                "WorkflowExecutionStatus{code=1, desc='running'}",
+                                "WorkflowExecutionStatus{code=2, desc='ready pause'}",
+                                "WorkflowExecutionStatus{code=3, desc='pause'}",
+                                "WorkflowExecutionStatus{code=4, desc='ready stop'}",
+                                "WorkflowExecutionStatus{code=5, desc='stop'}",
+                                "WorkflowExecutionStatus{code=6, desc='failure'}",
+                                "WorkflowExecutionStatus{code=7, desc='success'}",
+                                "WorkflowExecutionStatus{code=12, desc='delay execution'}",
+                                "WorkflowExecutionStatus{code=14, desc='serial wait'}",
+                                "WorkflowExecutionStatus{code=15, desc='ready block'}",
+                                "WorkflowExecutionStatus{code=16, desc='block'}",
+                                "WorkflowExecutionStatus{code=17, desc='wait to run'}"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "host",
+                        "in": "query",
+                        "description": "运行任务的主机IP地址",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "otherParamsJson",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/{id}/view-variables": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "viewVariables",
+                "description": "查询流程实例全局变量和局部变量",
+                "operationId": "viewVariables",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/{id}/view-gantt": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "vieGanttTree",
+                "description": "浏览Gantt图",
+                "operationId": "viewTree",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/{id}/tasks": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "queryTaskListByProcessId",
+                "description": "通过流程实例ID查询任务列表",
+                "operationId": "queryTaskListByProcessId",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/trigger": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "queryProcessInstanceListByTrigger",
+                "description": "QUERY_PROCESS_INSTANCE_BY_TRIGGER_NOTES",
+                "operationId": "queryProcessInstancesByTriggerCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "triggerCode",
+                        "in": "query",
+                        "description": "TRIGGER_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/top-n": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "queryTopNLongestRunningProcessInstance",
+                "description": "查询topN最长运行流程实例",
+                "operationId": "queryTopNLongestRunningProcessInstance",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "流程实例个数",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "startTime",
+                        "in": "query",
+                        "description": "流程实例启动时间",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "query",
+                        "description": "流程实例结束时间",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultProcessInstance"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/query-sub-by-parent": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "querySubProcessInstanceByTaskCode",
+                "description": "QUERY_SUBPROCESS_INSTANCE_BY_TASK_CODE_NOTES",
+                "operationId": "querySubProcessInstanceByTaskId",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskId",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "description": "TASK_CODE",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/query-parent-by-sub": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "queryParentInstanceBySubId",
+                "description": "通过子流程实例ID查询父流程实例信息",
+                "operationId": "queryParentInstanceBySubId",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "subId",
+                        "in": "query",
+                        "description": "子流程实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/process-instances/query-dynamic-sub-workflows": {
+            "get": {
+                "tags": [
+                    "流程实例相关操作"
+                ],
+                "summary": "queryDynamicSubWorkflowInstances",
+                "description": "QUERY_DYNAMIC_SUBPROCESS_INSTANCE_BY_TASK_CODE_NOTES",
+                "operationId": "queryDynamicSubWorkflowInstances",
+                "parameters": [
+                    {
+                        "name": "taskId",
+                        "in": "query",
+                        "description": "taskInstanceId",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListDynamicSubWorkflowDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

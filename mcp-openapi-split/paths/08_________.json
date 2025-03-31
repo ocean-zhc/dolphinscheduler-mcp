@@ -1,0 +1,659 @@
+{
+    "paths": {
+        "/projects/{projectCode}/task-definition/{code}": {
+            "get": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "queryTaskDefinitionByCode",
+                "description": "查询任务定义详情",
+                "operationId": "queryTaskDefinitionDetail",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "update",
+                "description": "更新任务定义",
+                "operationId": "updateTaskDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskDefinitionJsonObj",
+                        "in": "query",
+                        "description": "任务定义JSON",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "deleteTaskDefinition",
+                "description": "通过任务代码删除任务定义",
+                "operationId": "deleteTaskDefinitionByCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-definition/{code}/with-upstream": {
+            "put": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "updateWithUpstream",
+                "description": "更新任务定义",
+                "operationId": "updateTaskWithUpstream",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskDefinitionJsonObj",
+                        "in": "query",
+                        "description": "任务定义JSON",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "upstreamCodes",
+                        "in": "query",
+                        "description": "上游代码列表",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-definition": {
+            "get": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "queryTaskDefinitionListPaging",
+                "description": "查询任务定义列表页面",
+                "operationId": "queryTaskDefinitionListPaging",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "searchTaskName",
+                        "in": "query",
+                        "description": "查询任务名称",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskType",
+                        "in": "query",
+                        "description": "任务类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "taskExecuteType",
+                        "in": "query",
+                        "description": "任务执行类型",
+                        "required": false,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "BATCH",
+                                "STREAM"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "searchWorkflowName",
+                        "description": "查询工作量名称",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "save",
+                "description": "创建任务定义",
+                "operationId": "createTaskDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskDefinitionJson",
+                        "in": "query",
+                        "description": "任务定义JSON",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-definition/{code}/release": {
+            "post": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "releaseTaskDefinition",
+                "description": "上线任务定义",
+                "operationId": "releaseTaskDefinition",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "releaseState",
+                        "in": "query",
+                        "description": "发布流程定义",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "OFFLINE",
+                                "ONLINE"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-definition/save-single": {
+            "post": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "saveSingle",
+                "description": "创建单个任务定义",
+                "operationId": "createTaskBindsWorkFlow",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskDefinitionJsonObj",
+                        "in": "query",
+                        "description": "任务定义JSON",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "upstreamCodes",
+                        "in": "query",
+                        "description": "上游代码列表",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-definition/{code}/versions": {
+            "get": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "queryVersions",
+                "description": "查询任务定义版本列表",
+                "operationId": "queryTaskDefinitionVersions",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-definition/{code}/versions/{version}": {
+            "get": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "switchVersion",
+                "description": "切换任务定义版本",
+                "operationId": "switchTaskDefinitionVersion",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "版本号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "deleteVersion",
+                "description": "删除任务定义版本",
+                "operationId": "deleteTaskDefinitionVersion",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "version",
+                        "in": "path",
+                        "description": "版本号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/task-definition/gen-task-codes": {
+            "get": {
+                "tags": [
+                    "任务定义相关操作"
+                ],
+                "summary": "genTaskCodeList",
+                "description": "查询任务代码列表",
+                "operationId": "genTaskCodeList",
+                "parameters": [
+                    {
+                        "name": "genNum",
+                        "in": "query",
+                        "description": "总数",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,158 @@
+{
+    "paths": {
+        "/signOut": {
+            "post": {
+                "tags": [
+                    "用户登录相关操作"
+                ],
+                "summary": "signOut",
+                "description": "退出登录",
+                "operationId": "signOut",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "用户登录相关操作"
+                ],
+                "summary": "login",
+                "description": "用户登录",
+                "operationId": "login",
+                "parameters": [
+                    {
+                        "name": "userName",
+                        "in": "query",
+                        "description": "用户名",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "userPassword",
+                        "in": "query",
+                        "description": "用户密码",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/redirect/login/oauth2": {
+            "get": {
+                "tags": [
+                    "用户登录相关操作"
+                ],
+                "summary": "redirectToOauth2",
+                "description": "REDIRECT_TO_OAUTH2_LOGIN",
+                "operationId": "loginByAuth2",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "provider",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/oauth2-provider": {
+            "get": {
+                "tags": [
+                    "用户登录相关操作"
+                ],
+                "summary": "getOauth2Provider",
+                "description": "GET_OAUTH2_PROVIDER",
+                "operationId": "oauth2Provider",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListOAuth2ClientProperties"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login/sso": {
+            "get": {
+                "tags": [
+                    "用户登录相关操作"
+                ],
+                "summary": "sso login",
+                "description": "user sso login",
+                "operationId": "ssoLogin",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cookies": {
+            "delete": {
+                "tags": [
+                    "用户登录相关操作"
+                ],
+                "operationId": "clearCookieSessionId",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    }
+}

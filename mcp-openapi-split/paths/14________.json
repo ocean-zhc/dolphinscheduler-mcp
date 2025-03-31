@@ -1,0 +1,310 @@
+{
+    "paths": {
+        "/alert-groups/{id}": {
+            "put": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "updateAlertGroup",
+                "description": "编辑(更新)告警组",
+                "operationId": "updateAlertGroupById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "告警组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "groupName",
+                        "in": "query",
+                        "description": "组名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "备注(描述)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "alertInstanceIds",
+                        "in": "query",
+                        "description": "告警实例ID列表(字符串格式，多个告警实例ID以\",\"分割)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAlertGroup"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "delAlertGroupById",
+                "description": "通过ID删除告警组",
+                "operationId": "deleteAlertGroupById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "告警组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-groups": {
+            "get": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "queryAlertGroupListPaging",
+                "description": "分页查询告警组列表",
+                "operationId": "listPaging_2",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoAlertGroup"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "createAlertGroup",
+                "description": "创建告警组",
+                "operationId": "createAlertGroup",
+                "parameters": [
+                    {
+                        "name": "groupName",
+                        "in": "query",
+                        "description": "组名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "备注(描述)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "alertInstanceIds",
+                        "in": "query",
+                        "description": "alertInstanceIds",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAlertGroup"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-groups/query": {
+            "post": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "queryAlertGroupById",
+                "description": "QUERY_ALERT_GROUP_BY_ID_NOTES",
+                "operationId": "queryAlertGroupById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "告警组ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultAlertGroup"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-groups/verify-name": {
+            "get": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "verifyGroupName",
+                "description": "检查告警组是否存在",
+                "operationId": "verifyGroupName_1",
+                "parameters": [
+                    {
+                        "name": "groupName",
+                        "in": "query",
+                        "description": "组名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-groups/normal-list": {
+            "get": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "listNormalAlertGroupById",
+                "description": "告警组列表",
+                "operationId": "normalAlertGroupList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListAlertGroup"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/alert-groups/list": {
+            "get": {
+                "tags": [
+                    "告警组相关操作"
+                ],
+                "summary": "listAlertGroupById",
+                "description": "告警组列表",
+                "operationId": "list",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListAlertGroup"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

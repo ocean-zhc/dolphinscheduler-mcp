@@ -1,0 +1,44 @@
+{
+    "components": {
+        "schemas": {
+            "AuditModelTypeDto": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                }
+            },
+            "AuditDto": {
+                "type": "object",
+                "properties": {
+                    "userName": {
+                        "type": "string"
+                    },
+                    "modelType": {
+                        "type": "string"
+                    },
+                    "modelName": {
+                        "type": "string"
+                    },
+                    "operation": {
+                        "type": "string"
+                    },
+                    "createTime": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "detail": {
+                        "type": "string"
+                    },
+                    "latency": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

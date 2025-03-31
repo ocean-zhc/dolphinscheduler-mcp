@@ -1,0 +1,221 @@
+{
+    "paths": {
+        "/projects/{projectCode}/lineages/tasks/verify-delete": {
+            "post": {
+                "tags": [
+                    "工作流血缘相关操作"
+                ],
+                "summary": "verifyTaskCanDelete",
+                "description": "校验是否可以删除任务",
+                "operationId": "verifyTaskCanDelete",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "processDefinitionCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "query",
+                        "description": "任务定义代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Result"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/lineages/{workFlowCode}": {
+            "get": {
+                "tags": [
+                    "工作流血缘相关操作"
+                ],
+                "summary": "queryLineageByWorkFlowCode",
+                "description": "通过血缘代码查询工作流血缘关系",
+                "operationId": "queryWorkFlowLineageByCode",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "workFlowCode",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultMapStringObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/lineages/query-dependent-tasks": {
+            "get": {
+                "tags": [
+                    "工作流血缘相关操作"
+                ],
+                "summary": "queryDownstreamDependentTaskList",
+                "description": "QUERY_DOWNSTREAM_DEPENDENT_TASK_NOTES",
+                "operationId": "queryDownstreamDependentTaskList",
+                "parameters": [
+                    {
+                        "name": "workFlowCode",
+                        "in": "query",
+                        "description": "流程定义编码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskCode",
+                        "in": "query",
+                        "description": "任务定义代码",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultMapStringObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/lineages/query-by-name": {
+            "get": {
+                "tags": [
+                    "工作流血缘相关操作"
+                ],
+                "summary": "queryLineageByWorkFlowName",
+                "description": "通过名称查询工作流血缘列表",
+                "operationId": "queryWorkFlowLineageByName",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "workFlowName",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListWorkFlowLineage"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/projects/{projectCode}/lineages/list": {
+            "get": {
+                "tags": [
+                    "工作流血缘相关操作"
+                ],
+                "summary": "queryWorkFlowList",
+                "description": "查询工作量血缘关系",
+                "operationId": "queryWorkFlowLineage",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultMapStringObject"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

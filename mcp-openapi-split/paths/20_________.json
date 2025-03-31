@@ -1,0 +1,266 @@
+{
+    "paths": {
+        "/data-quality/ruleList": {
+            "get": {
+                "tags": [
+                    "数据质量相关操作"
+                ],
+                "summary": "queryRuleList",
+                "description": "查询规则列表",
+                "operationId": "queryRuleList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListDqRule"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/data-quality/rule/page": {
+            "get": {
+                "tags": [
+                    "数据质量相关操作"
+                ],
+                "summary": "queryRuleListPaging",
+                "description": "查询规则分页列表",
+                "operationId": "queryRuleListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ruleType",
+                        "in": "query",
+                        "description": "规则类型",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoDqRule"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/data-quality/result/page": {
+            "get": {
+                "tags": [
+                    "数据质量相关操作"
+                ],
+                "summary": "queryExecuteResultListPaging",
+                "description": "查询数据质量任务结果分页列表",
+                "operationId": "queryExecuteResultListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "ruleType",
+                        "in": "query",
+                        "description": "规则类型",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "状态",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "startDate",
+                        "in": "query",
+                        "description": "开始时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "endDate",
+                        "in": "query",
+                        "description": "结束时间",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoDqExecuteResult"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/data-quality/getRuleFormCreateJson": {
+            "get": {
+                "tags": [
+                    "数据质量相关操作"
+                ],
+                "summary": "getRuleFormCreateJson",
+                "description": "获取规则form-create json",
+                "operationId": "getRuleFormCreateJsonById",
+                "parameters": [
+                    {
+                        "name": "ruleId",
+                        "in": "query",
+                        "description": "规则ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultString"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/data-quality/getDatasourceOptionsById": {
+            "get": {
+                "tags": [
+                    "数据质量相关操作"
+                ],
+                "summary": "getDatasourceOptionsById",
+                "description": "获取数据源OPTIONS",
+                "operationId": "getDatasourceOptionsById",
+                "parameters": [
+                    {
+                        "name": "datasourceId",
+                        "in": "query",
+                        "description": "数据源ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListParamsOptions"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

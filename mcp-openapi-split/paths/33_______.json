@@ -1,0 +1,292 @@
+{
+    "paths": {
+        "/cluster/verify-cluster": {
+            "post": {
+                "tags": [
+                    "集群相关操作"
+                ],
+                "summary": "verifyCluster",
+                "description": "校验集群",
+                "operationId": "verifyCluster",
+                "parameters": [
+                    {
+                        "name": "clusterName",
+                        "in": "query",
+                        "description": "集群名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cluster/update": {
+            "post": {
+                "tags": [
+                    "集群相关操作"
+                ],
+                "summary": "updateCluster",
+                "description": "更新集群",
+                "operationId": "updateCluster",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "集群代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "集群名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "config",
+                        "in": "query",
+                        "description": "集群配置",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "集群描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultCluster"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cluster/delete": {
+            "post": {
+                "tags": [
+                    "集群相关操作"
+                ],
+                "summary": "deleteClusterByCode",
+                "description": "通过集群代码删除集群",
+                "operationId": "deleteCluster",
+                "parameters": [
+                    {
+                        "name": "clusterCode",
+                        "in": "query",
+                        "description": "集群代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultBoolean"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cluster/create": {
+            "post": {
+                "tags": [
+                    "集群相关操作"
+                ],
+                "summary": "createCluster",
+                "description": "创建集群",
+                "operationId": "createCluster",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "集群名称",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "config",
+                        "in": "query",
+                        "description": "集群配置",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "description",
+                        "in": "query",
+                        "description": "集群描述",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultLong"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cluster/query-cluster-list": {
+            "get": {
+                "tags": [
+                    "集群相关操作"
+                ],
+                "summary": "queryAllClusterList",
+                "description": "查询所有集群列表",
+                "operationId": "queryAllClusterList",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultListClusterDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cluster/query-by-code": {
+            "get": {
+                "tags": [
+                    "集群相关操作"
+                ],
+                "summary": "queryClusterByCode",
+                "description": "通过集群ID查询集群",
+                "operationId": "queryClusterByCode",
+                "parameters": [
+                    {
+                        "name": "clusterCode",
+                        "in": "query",
+                        "description": "集群代码",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultClusterDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cluster/list-paging": {
+            "get": {
+                "tags": [
+                    "集群相关操作"
+                ],
+                "summary": "queryClusterListPaging",
+                "description": "查询集群分页列表",
+                "operationId": "queryClusterListPaging",
+                "parameters": [
+                    {
+                        "name": "searchVal",
+                        "in": "query",
+                        "description": "搜索值",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "页大小",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "pageNo",
+                        "in": "query",
+                        "description": "页码号",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultPageInfoClusterDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

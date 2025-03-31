@@ -1,0 +1,200 @@
+{
+    "paths": {
+        "/log/{projectCode}/download-log": {
+            "get": {
+                "tags": [
+                    "日志相关操作"
+                ],
+                "summary": "downloadTaskLogInSpecifiedProject",
+                "description": "下载指定项目的任务实例日志",
+                "operationId": "downloadTaskLog",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskInstanceId",
+                        "in": "query",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/log/{projectCode}/detail": {
+            "get": {
+                "tags": [
+                    "日志相关操作"
+                ],
+                "summary": "queryLogInSpecifiedProject",
+                "description": "查询指定项目的任务实例日志",
+                "operationId": "queryLog",
+                "parameters": [
+                    {
+                        "name": "projectCode",
+                        "in": "path",
+                        "description": "项目Code",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    },
+                    {
+                        "name": "taskInstanceId",
+                        "in": "query",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "skipLineNum",
+                        "in": "query",
+                        "description": "忽略行数",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "显示多少条",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultString"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/log/download-log": {
+            "get": {
+                "tags": [
+                    "日志相关操作"
+                ],
+                "summary": "downloadTaskLog",
+                "description": "下载任务实例日志",
+                "operationId": "downloadTaskLog_1",
+                "parameters": [
+                    {
+                        "name": "taskInstanceId",
+                        "in": "query",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/log/detail": {
+            "get": {
+                "tags": [
+                    "日志相关操作"
+                ],
+                "summary": "queryLog",
+                "description": "查询任务实例日志",
+                "operationId": "queryLog_1",
+                "parameters": [
+                    {
+                        "name": "taskInstanceId",
+                        "in": "query",
+                        "description": "任务实例ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "skipLineNum",
+                        "in": "query",
+                        "description": "忽略行数",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "显示多少条",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ResultResponseTaskLog"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
