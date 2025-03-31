@@ -35,7 +35,7 @@ This guide provides detailed instructions for installing and setting up the Dolp
 
 4. Configure environment variables by creating a `.env` file in the project root:
    ```
-   DOLPHINSCHEDULER_API_URL=http://your-dolphinscheduler-server:12345/dolphinscheduler/api
+   DOLPHINSCHEDULER_API_URL=http://your-dolphinscheduler-server:12345/dolphinscheduler
    DOLPHINSCHEDULER_API_KEY=your_api_key
    ```
 

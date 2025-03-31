@@ -22,7 +22,7 @@ Retrieves the current connection settings for the DolphinScheduler API.
 **Example Response:**
 ```json
 {
-  "url": "http://localhost:12345/dolphinscheduler/api",
+  "url": "http://localhost:12345/dolphinscheduler",
   "has_api_key": true
 }
 ```
