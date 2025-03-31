@@ -23,7 +23,7 @@ pip install dolphinscheduler-mcp
 
 ### Environment Variables
 
-- `DOLPHINSCHEDULER_API_URL`: URL for the DolphinScheduler API (default: http://localhost:12345/dolphinscheduler/api/v1)
+- `DOLPHINSCHEDULER_API_URL`: URL for the DolphinScheduler API (default: http://localhost:12345/dolphinscheduler)
 - `DOLPHINSCHEDULER_API_KEY`: API token for authentication with the DolphinScheduler API
 - `DOLPHINSCHEDULER_MCP_HOST`: Host to bind the MCP server (default: 0.0.0.0)
 - `DOLPHINSCHEDULER_MCP_PORT`: Port to bind the MCP server (default: 8089)

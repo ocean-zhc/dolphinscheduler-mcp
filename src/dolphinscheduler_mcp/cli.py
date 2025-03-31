@@ -55,7 +55,7 @@ def main() -> int:
     # Check if API URL and key are set
     if "DOLPHINSCHEDULER_API_URL" not in os.environ:
         print("Warning: DOLPHINSCHEDULER_API_URL environment variable is not set.")
-        print("Using default: http://localhost:12345/dolphinscheduler/api/v1")
+        print("Using default: http://localhost:12345/dolphinscheduler")
     
     if "DOLPHINSCHEDULER_API_KEY" not in os.environ:
         print("Warning: DOLPHINSCHEDULER_API_KEY environment variable is not set.")

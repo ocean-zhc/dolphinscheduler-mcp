@@ -23,15 +23,15 @@ class TestConfig(unittest.TestCase):
     def test_default_values(self):
         """Test default configuration values."""
         config = Config()
-        self.assertEqual(config.api_url, "http://localhost:12345/dolphinscheduler/api")
+        self.assertEqual(config.api_url, "http://localhost:12345/dolphinscheduler")
         self.assertIsNone(config.api_key)
         self.assertFalse(config.has_api_key())
 
-    @patch.dict(os.environ, {"DOLPHINSCHEDULER_API_URL": "http://test-server:8080/api"})
+    @patch.dict(os.environ, {"DOLPHINSCHEDULER_API_URL": "http://test-server:8080"})
     def test_env_api_url(self):
         """Test API URL from environment variable."""
         config = Config()
-        self.assertEqual(config.api_url, "http://test-server:8080/api")
+        self.assertEqual(config.api_url, "http://test-server:8080")
 
     @patch.dict(os.environ, {"DOLPHINSCHEDULER_API_KEY": "test-api-key"})
     def test_env_api_key(self):
@@ -49,12 +49,12 @@ class TestConfig(unittest.TestCase):
     def test_update_values(self):
         """Test updating configuration values."""
         config = Config()
-        config.api_url = "http://new-server:9000/api"
+        config.api_url = "http://new-server:9000"
         config.api_key = "new-api-key"
         
         # Get a new instance and verify values are preserved (singleton)
         new_config = Config()
-        self.assertEqual(new_config.api_url, "http://new-server:9000/api")
+        self.assertEqual(new_config.api_url, "http://new-server:9000")
         self.assertEqual(new_config.api_key, "new-api-key")
         self.assertTrue(new_config.has_api_key())
 
