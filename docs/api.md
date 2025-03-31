@@ -42,7 +42,7 @@ Updates the connection settings for the DolphinScheduler API.
 {
   "name": "update-connection-settings",
   "arguments": {
-    "url": "http://new-host:12345/dolphinscheduler/api",
+    "url": "http://new-host:12345/dolphinscheduler",
     "api_key": "new-api-key"
   }
 }
@@ -52,7 +52,7 @@ Updates the connection settings for the DolphinScheduler API.
 ```json
 {
   "success": true,
-  "url": "http://new-host:12345/dolphinscheduler/api",
+  "url": "http://new-host:12345/dolphinscheduler",
   "has_api_key": true
 }
 ```
