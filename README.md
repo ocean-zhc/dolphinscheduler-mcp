@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/ocean-zhc-dolphinscheduler-mcp-badge.png)](https://mseep.ai/app/ocean-zhc-dolphinscheduler-mcp)
+
 # DolphinScheduler MCP Server
 
 A Model Context Protocol (MCP) server for Apache DolphinScheduler, allowing AI agents to interact with DolphinScheduler through a standardized protocol.
