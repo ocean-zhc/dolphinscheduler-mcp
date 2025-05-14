@@ -1,4 +1,4 @@
-"""Tools for K8S________ operations in DolphinScheduler."""
+"""Tools for k8s namespace operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -267,8 +267,8 @@ class GetK8sNamespaceAuthorizedNamespace(FastMCPTool):
             await client.close()
 
 
-def register_K8S_________tools(mcp):
-    """Register K8S________ tools with FastMCP.
+def register_k8s_namespace_tools(mcp):
+    """Register k8s namespace tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

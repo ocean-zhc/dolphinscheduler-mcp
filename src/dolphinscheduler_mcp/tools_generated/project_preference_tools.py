@@ -1,4 +1,4 @@
-"""Tools for project_preference_related_operation operations in DolphinScheduler."""
+"""Tools for project preference operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -122,8 +122,8 @@ class CreateProjectsProjectPreference(FastMCPTool):
             await client.close()
 
 
-def register_project_preference_related_operation_tools(mcp):
-    """Register project_preference_related_operation tools with FastMCP.
+def register_project_preference_tools(mcp):
+    """Register project preference tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

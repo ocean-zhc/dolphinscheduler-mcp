@@ -1,4 +1,4 @@
-"""Tools for ________ operations in DolphinScheduler."""
+"""Tools for project parameter operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -282,8 +282,8 @@ class CreateProjectsProjectParameterBatchDelete(FastMCPTool):
             await client.close()
 
 
-def register__________tools(mcp):
-    """Register ________ tools with FastMCP.
+def register_project_parameter_tools(mcp):
+    """Register project parameter tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

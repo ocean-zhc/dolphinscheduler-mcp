@@ -8,9 +8,10 @@ from ..client import DolphinSchedulerClient
 from ..config import Config
 from ..fastmcp_compat import FastMCPTool
 
+
 class CheckEnvironmentSettings(FastMCPTool):
     """Tool for checking the current environment settings for DolphinScheduler API."""
-    
+
     name = "check_environment_settings"
     description = "Check the current environment settings for DolphinScheduler API"
     is_async = False
@@ -23,7 +24,7 @@ class CheckEnvironmentSettings(FastMCPTool):
             }
         }
     }
-    
+
     def _run(self, id: Optional[str] = None) -> Dict[str, Any]:
         """Check the current environment settings.
         
@@ -35,7 +36,7 @@ class CheckEnvironmentSettings(FastMCPTool):
         """
         try:
             config = Config()
-            
+
             return {
                 "success": True,
                 "api_url": config.api_url,
@@ -49,12 +50,13 @@ class CheckEnvironmentSettings(FastMCPTool):
                 "error": str(e)
             }
 
-def register_check_env_tools(mcp):
+
+def register_environment_check_tools(mcp):
     """Register environment check tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.
     """
     from ..fastmcp_compat import register_tool_class
-    
-    register_tool_class(mcp, CheckEnvironmentSettings) 
+
+    register_tool_class(mcp, CheckEnvironmentSettings)

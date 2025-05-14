@@ -1,4 +1,4 @@
-"""Tools for Worker____ operations in DolphinScheduler."""
+"""Tools for worker group operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -210,8 +210,8 @@ class DeleteWorkerGroups(FastMCPTool):
             await client.close()
 
 
-def register_Worker_____tools(mcp):
-    """Register Worker____ tools with FastMCP.
+def register_worker_group_tools(mcp):
+    """Register worker group tool with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

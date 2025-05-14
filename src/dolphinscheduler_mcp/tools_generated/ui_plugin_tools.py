@@ -1,4 +1,4 @@
-"""Tools for UI______ operations in DolphinScheduler."""
+"""Tools for ui plugin operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -124,8 +124,8 @@ class GetUiPluginsQueryByType(FastMCPTool):
             await client.close()
 
 
-def register_UI_______tools(mcp):
-    """Register UI______ tools with FastMCP.
+def register_ui_plugin_tools(mcp):
+    """Register ui plugin tool with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

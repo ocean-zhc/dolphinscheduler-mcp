@@ -1,4 +1,4 @@
-"""Tools for PROJECT_WORKER_GROUP_TAG operations in DolphinScheduler."""
+"""Tools for project worker group operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -77,8 +77,8 @@ class CreateProjectsWorkerGroup(FastMCPTool):
             await client.close()
 
 
-def register_PROJECT_WORKER_GROUP_TAG_tools(mcp):
-    """Register PROJECT_WORKER_GROUP_TAG tools with FastMCP.
+def register_project_worker_group_tools(mcp):
+    """Register project worker group tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

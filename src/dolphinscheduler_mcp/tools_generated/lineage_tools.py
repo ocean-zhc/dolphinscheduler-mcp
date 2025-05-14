@@ -1,4 +1,4 @@
-"""Tools for _________ operations in DolphinScheduler."""
+"""Tools for lineage operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -208,8 +208,8 @@ class ListProjectsLineagesList(FastMCPTool):
             await client.close()
 
 
-def register___________tools(mcp):
-    """Register _________ tools with FastMCP.
+def register_lineage_tools(mcp):
+    """Register lineage tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

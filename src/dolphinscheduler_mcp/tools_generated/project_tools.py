@@ -1,4 +1,4 @@
-"""Tools for ______ operations in DolphinScheduler."""
+"""Tools for project operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -466,8 +466,8 @@ class GetProjectsAuthedProject(FastMCPTool):
             await client.close()
 
 
-def register________tools(mcp):
-    """Register ______ tools with FastMCP.
+def register_project_tools(mcp):
+    """Register project tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

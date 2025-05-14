@@ -1,4 +1,4 @@
-"""Tools for __token____ operations in DolphinScheduler."""
+"""Tools for access token operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -260,8 +260,8 @@ class GetAccessTokensUser(FastMCPTool):
             await client.close()
 
 
-def register___token_____tools(mcp):
-    """Register __token____ tools with FastMCP.
+def register_access_token_tools(mcp):
+    """Register access token tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.
