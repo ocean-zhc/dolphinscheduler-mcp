@@ -35,7 +35,8 @@ venv.bak/
 .vscode/
 *.swp
 *.swo
+.trae/
 
 # OS
 .DS_Store
-Thumbs.db 
+Thumbs.db

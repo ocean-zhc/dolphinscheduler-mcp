@@ -1,4 +1,4 @@
-"""Tools for _______ operations in DolphinScheduler."""
+"""Tools for data source operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -548,8 +548,8 @@ class GetDatasourcesAuthedDatasource(FastMCPTool):
             await client.close()
 
 
-def register_________tools(mcp):
-    """Register _______ tools with FastMCP.
+def register_datasource_tools(mcp):
+    """Register datasource tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

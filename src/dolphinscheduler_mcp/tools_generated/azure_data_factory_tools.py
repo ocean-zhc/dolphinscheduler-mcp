@@ -1,4 +1,4 @@
-"""Tools for CLOUD_TAG operations in DolphinScheduler."""
+"""Tools for azure data factory operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -86,8 +86,8 @@ class ListCloudAzureDatafactoryFactories(FastMCPTool):
             await client.close()
 
 
-def register_CLOUD_TAG_tools(mcp):
-    """Register CLOUD_TAG tools with FastMCP.
+def register_azure_data_factory_tools(mcp):
+    """Register azure data factory tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.

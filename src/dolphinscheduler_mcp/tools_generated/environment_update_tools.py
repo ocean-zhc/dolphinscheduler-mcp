@@ -9,13 +9,14 @@ from ..client import DolphinSchedulerClient
 from ..config import Config
 from ..fastmcp_compat import FastMCPTool
 
+
 class UpdateEnvironmentSettings(FastMCPTool):
     """Tool for updating the environment settings for DolphinScheduler API."""
-    
+
     name = "update_connection_settings"
     description = "更新DolphinScheduler API连接设置"
     is_async = True
-    
+
     schema = {
         "type": "object",
         "properties": {
@@ -34,8 +35,9 @@ class UpdateEnvironmentSettings(FastMCPTool):
         },
         "required": []
     }
-    
-    async def _run(self, id: Optional[str] = None, api_url: Optional[str] = None, api_key: Optional[str] = None) -> Dict[str, Any]:
+
+    async def _run(self, id: Optional[str] = None, api_url: Optional[str] = None, api_key: Optional[str] = None) -> \
+    Dict[str, Any]:
         """Update the environment settings.
         
         Args:
@@ -47,22 +49,22 @@ class UpdateEnvironmentSettings(FastMCPTool):
             Dictionary containing updated settings
         """
         logger = logging.getLogger("dolphinscheduler_mcp.tools.update_env")
-        
+
         try:
             config = Config()
-            
+
             # Update API URL if provided
             if api_url is not None:
                 logger.info(f"Updating API URL to: {api_url}")
                 config.api_url = api_url
                 os.environ["DOLPHINSCHEDULER_API_URL"] = api_url
-            
+
             # Update API key if provided
             if api_key is not None:
                 logger.info("Updating API key")
                 config.api_key = api_key
                 os.environ["DOLPHINSCHEDULER_API_KEY"] = api_key
-            
+
             return {
                 "success": True,
                 "api_url": config.api_url,
@@ -75,12 +77,13 @@ class UpdateEnvironmentSettings(FastMCPTool):
                 "error": str(e)
             }
 
-def register_update_env_tools(mcp):
+
+def register_environment_update_tools(mcp):
     """Register environment update tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.
     """
     from ..fastmcp_compat import register_tool_class
-    
-    register_tool_class(mcp, UpdateEnvironmentSettings) 
+
+    register_tool_class(mcp, UpdateEnvironmentSettings)

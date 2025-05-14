@@ -1,4 +1,4 @@
-"""Tools for DYNAMIC_TASK_TYPE operations in DolphinScheduler."""
+"""Tools for dynamic task type operations in DolphinScheduler."""
 
 from typing import Dict, List, Optional
 
@@ -58,8 +58,8 @@ class ListDynamicTaskcategories(FastMCPTool):
             await client.close()
 
 
-def register_DYNAMIC_TASK_TYPE_tools(mcp):
-    """Register DYNAMIC_TASK_TYPE tools with FastMCP.
+def register_dynamic_task_type_tools(mcp):
+    """Register dynamic task type tools with FastMCP.
     
     Args:
         mcp: The FastMCP instance to register tools with.
